@@ -1,17 +1,17 @@
 import * as mongoose from "mongoose";
 
 const ProductSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-    },
     image: {
-        type: String,
         default: "",
+        type: String,
+    },
+    name: {
+        required: true,
+        type: String,
     },
     single_peace: {
-        type: Boolean,
         default: false,
+        type: Boolean,
     },
 });
 
