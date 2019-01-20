@@ -31,9 +31,9 @@ export default class ProductService {
         const loadedProduct = await this.product.findById(id);
 
         if (!loadedProduct) {
-            // return new Promise((resolve, reject) => {
-            //     reject();
-            // });
+            return new Promise((resolve, reject) => {
+                reject('item_not_exists');
+            });
         }
 
         return await this.product.deleteOne({_id: id});

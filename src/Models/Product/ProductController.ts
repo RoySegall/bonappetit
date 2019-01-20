@@ -63,32 +63,18 @@ export default class ProductController extends BaseController {
         });
 
         this.router.delete("/product/:id", async (req: express.Request, res: express.Response) => {
+            this.productService.delete(req.params.id)
+                .then(() => {
+                    res.status(200).send({message: "removed"})
+                })
+                .catch((error) => {
+                    if (error != "item_not_exists") {
+                        BaseController.generalError(res);
+                        return;
+                    }
 
-            try {
-                await this.productService.delete(req.params.id);
-            } catch (e) {
-                res.status(400).send({"b": "c"});
-            }
-
-            try {
-
-                const loadedProduct = await Product.findById(req.params.id);
-
-                if (!loadedProduct) {
-                    res
-                        .status(404)
-                        .send({message: "The item does no exists"});
-                    return;
-                }
-
-                await Product.deleteOne({_id: req.params.id});
-
-                res
-                    .status(200)
-                    .send({message: "Removed"});
-            } catch (e) {
-                BaseController.generalError(res, BaseController.handleMongooseError(e.errors));
-            }
+                    BaseController.generalError(res, {error: "The item does no exists"}, 404);
+                });
         });
     }
 }
