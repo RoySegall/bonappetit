@@ -26,13 +26,13 @@ describe("Product service", () => {
 
         expect(loadedEntry._id).toEqual(loadedEntry._id);
 
-        productService.update(entry._id, {name: 'pizza'}, (err, product) => {
+        productService.update(entry._id, {name: "pizza"}, (err, product) => {
             if (err) {
                 console.error(err);
                 return;
             }
 
-            expect(product.name).toEqual('pizza');
+            expect(product.name).toEqual("pizza");
         });
 
         await productService.delete(entry._id);
