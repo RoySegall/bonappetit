@@ -25,8 +25,13 @@ export default class ProductService implements EntityService {
         return this.productSchema.findById(id).lean();
     }
 
-    public update(id: string, values: any, callback: any) {
-        return this.productSchema.findOneAndUpdate({_id: id}, values, {new: true}, callback);
+    public update(id: string, values: any, callback: any = null) {
+
+        if (!callback) {
+            callback = () => {};
+        }
+
+        return this.productSchema.findOneAndUpdate({_id: id}, values, {new: true}, callback).exec();
     }
 
     public async create(object: object) {
