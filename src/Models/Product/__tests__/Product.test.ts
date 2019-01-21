@@ -6,7 +6,7 @@ import ProductService from "../ProductService";
 const productService = new ProductService();
 const collection = "product_test";
 
-describe("Product", () => {
+describe("Product service", () => {
     beforeAll(async () => {
         await mongoose.connect(Settings.get().MONGO_URL);
 
