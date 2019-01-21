@@ -15,7 +15,7 @@ describe("Product", () => {
     });
 
     test("Testing crud operations", async () => {
-        expect.assertions(4);
+        expect.assertions(5);
         expect(await productService.getAll()).toEqual([]);
         const entry = await productService.create({name: "Foo"});
         const entries = await productService.getAll();
@@ -26,9 +26,14 @@ describe("Product", () => {
 
         expect(loadedEntry._id).toEqual(loadedEntry._id);
 
-        // productService.update(entry._id, {name: 'pizza'}, (err, product) => {
-        //     console.log(err, product);
-        // });
+        productService.update(entry._id, {name: 'pizza'}, (err, product) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+
+            expect(product.name).toEqual('pizza');
+        });
 
         await productService.delete(entry._id);
         loadedEntry = await productService.load(entry._id);
