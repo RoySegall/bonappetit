@@ -15,7 +15,7 @@ class App {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: false }));
 
-        // Adding product routes.
+        // Adding productSchema routes.
         this.app.use("/", new ProductController().router);
     }
 }

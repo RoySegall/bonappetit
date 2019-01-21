@@ -1,34 +1,38 @@
 import * as mongoose from "mongoose";
 import ProductSchema from "./ProductSchema";
 
-export default class ProductService {
+export default class ProductService implements EntityService {
 
-    protected product: any;
+    protected productSchema: any;
 
     constructor() {
-        this.product = mongoose.model("Product", ProductSchema);
+        this.productSchema = mongoose.model("Product", ProductSchema);
+    }
+
+    public setProduct(product: any) {
+        this.productSchema = product;
     }
 
     public async getAll() {
-        return await this.product.find({}).lean()
+        return await this.productSchema.find({}).lean()
     }
 
     public async load(id: string) {
-        return this.product.findById(id);
+        return this.productSchema.findById(id);
     }
 
     public update(id: string, values: any, callback: any) {
-        return this.product.findOneAndUpdate({_id: id}, values, {new: true}, callback);
+        return this.productSchema.findOneAndUpdate({_id: id}, values, {new: true}, callback);
     }
 
     public async create(object: object) {
-        const product = new this.product(object);
+        const product = new this.productSchema(object);
 
         return await product.save();
     }
 
     public async delete(id: string) {
-        const loadedProduct = await this.product.findById(id);
+        const loadedProduct = await this.productSchema.findById(id);
 
         if (!loadedProduct) {
             return new Promise((resolve, reject) => {
@@ -36,7 +40,7 @@ export default class ProductService {
             });
         }
 
-        return await this.product.deleteOne({_id: id});
+        return await this.productSchema.deleteOne({_id: id});
     }
 
 }

@@ -1,15 +1,11 @@
 import * as express from "express";
-import * as mongoose from "mongoose";
 import BaseController from "../../Base/BaseController";
-import ProductSchema from "./ProductSchema";
 import ProductService from "./ProductService";
-
-const Product = mongoose.model("Product", ProductSchema);
 
 export default class ProductController extends BaseController {
 
     /**
-     * The product service.
+     * The productSchema service.
      */
     protected productService: ProductService;
 
@@ -19,6 +15,9 @@ export default class ProductController extends BaseController {
         this.productService = new ProductService();
     }
 
+    /**
+     * Defining the routes.
+     */
     public routes() {
         this.router.get("/products", async (req: express.Request, res: express.Response) => {
             try {
@@ -30,7 +29,7 @@ export default class ProductController extends BaseController {
             }
         });
 
-        this.router.get("/product/:id", async (req: express.Request, res: express.Response) => {
+        this.router.get("/productSchema/:id", async (req: express.Request, res: express.Response) => {
             const loadedProduct = await this.productService.load(req.params.id);
 
             if (!loadedProduct) {
@@ -43,7 +42,7 @@ export default class ProductController extends BaseController {
             res.status(200).send(loadedProduct);
         });
 
-        this.router.patch("/product/:id", async (req: express.Request, res: express.Response) => {
+        this.router.patch("/productSchema/:id", async (req: express.Request, res: express.Response) => {
             this.productService.update(req.params.id, req.body, (err, product) => {
                 if (err) {
                     BaseController.generalError(res, BaseController.handleMongooseError(err));
@@ -54,7 +53,7 @@ export default class ProductController extends BaseController {
             });
         });
 
-        this.router.post("/product", async (req: express.Request, res: express.Response) => {
+        this.router.post("/productSchema", async (req: express.Request, res: express.Response) => {
             try {
                 res.status(201).send(await this.productService.create(req.body));
             } catch (e) {
@@ -62,7 +61,7 @@ export default class ProductController extends BaseController {
             }
         });
 
-        this.router.delete("/product/:id", async (req: express.Request, res: express.Response) => {
+        this.router.delete("/productSchema/:id", async (req: express.Request, res: express.Response) => {
             this.productService.delete(req.params.id)
                 .then(() => {
                     res.status(200).send({message: "removed"})
