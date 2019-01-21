@@ -1,16 +1,27 @@
 import * as express from "express";
-import * as mongoose from "mongoose";
 import BaseController from "../../Base/BaseController";
-import ProductSchema from "./ProductSchema";
-
-const Product = mongoose.model("Product", ProductSchema);
+import ProductService from "./ProductService";
 
 export default class ProductController extends BaseController {
 
+    /**
+     * The productSchema service.
+     */
+    protected productService: ProductService;
+
+    constructor() {
+        super();
+
+        this.productService = new ProductService();
+    }
+
+    /**
+     * Defining the routes.
+     */
     public routes() {
         this.router.get("/products", async (req: express.Request, res: express.Response) => {
             try {
-                const products = await Product.find({}).lean();
+                const products = await this.productService.getAll();
                 res.status(200).send(products);
             } catch (e) {
                 BaseController.generalError(res);
@@ -18,8 +29,8 @@ export default class ProductController extends BaseController {
             }
         });
 
-        this.router.get("/product/:id", async (req: express.Request, res: express.Response) => {
-            const loadedProduct = await Product.findById(req.params.id);
+        this.router.get("/productSchema/:id", async (req: express.Request, res: express.Response) => {
+            const loadedProduct = await this.productService.load(req.params.id);
 
             if (!loadedProduct) {
                 res
@@ -31,8 +42,8 @@ export default class ProductController extends BaseController {
             res.status(200).send(loadedProduct);
         });
 
-        this.router.patch("/product/:id", async (req: express.Request, res: express.Response) => {
-            Product.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, (err, product) => {
+        this.router.patch("/productSchema/:id", async (req: express.Request, res: express.Response) => {
+            this.productService.update(req.params.id, req.body, (err, product) => {
                 if (err) {
                     BaseController.generalError(res, BaseController.handleMongooseError(err));
                     return;
@@ -42,35 +53,27 @@ export default class ProductController extends BaseController {
             });
         });
 
-        this.router.post("/product", async (req: express.Request, res: express.Response) => {
-            const product = new Product(req.body);
-
+        this.router.post("/productSchema", async (req: express.Request, res: express.Response) => {
             try {
-                res.status(201).send(await product.save());
+                res.status(201).send(await this.productService.create(req.body));
             } catch (e) {
                 BaseController.generalError(res, BaseController.handleMongooseError(e.errors));
             }
         });
 
-        this.router.delete("/product/:id", async (req: express.Request, res: express.Response) => {
-            try {
-                const loadedProduct = await Product.findById(req.params.id);
+        this.router.delete("/productSchema/:id", async (req: express.Request, res: express.Response) => {
+            this.productService.delete(req.params.id)
+                .then(() => {
+                    res.status(200).send({message: "removed"});
+                })
+                .catch((error) => {
+                    if (error !== "item_not_exists") {
+                        BaseController.generalError(res);
+                        return;
+                    }
 
-                if (!loadedProduct) {
-                    res
-                        .status(404)
-                        .send({message: "The item does no exists"});
-                    return;
-                }
-
-                await Product.deleteOne({_id: req.params.id});
-
-                res
-                    .status(200)
-                    .send({message: "Removed"});
-            } catch (e) {
-                BaseController.generalError(res, BaseController.handleMongooseError(e.errors));
-            }
+                    BaseController.generalError(res, {error: "The item does no exists"}, 404);
+                });
         });
     }
 }

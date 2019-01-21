@@ -1,5 +1,11 @@
 language: node_js
 node_js: 8.11.1
+services: mongodb
 before_script:
   - npm i -g tslint typescript ts-node
-script: npm run lint
+  - npm i -D jest typescript
+  - npm i -D ts-jest @types/jest
+  - cp .env.travis .env
+script:
+  - npm run lint
+  - npm run unit-test
