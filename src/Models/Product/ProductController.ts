@@ -64,10 +64,10 @@ export default class ProductController extends BaseController {
         this.router.delete("/productSchema/:id", async (req: express.Request, res: express.Response) => {
             this.productService.delete(req.params.id)
                 .then(() => {
-                    res.status(200).send({message: "removed"})
+                    res.status(200).send({message: "removed"});
                 })
                 .catch((error) => {
-                    if (error != "item_not_exists") {
+                    if (error !== "item_not_exists") {
                         BaseController.generalError(res);
                         return;
                     }

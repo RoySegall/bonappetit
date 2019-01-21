@@ -14,11 +14,11 @@ export default class ProductService implements EntityService {
     }
 
     public async getAll() {
-        return await this.productSchema.find({}).lean()
+        return await this.productSchema.find({}).lean();
     }
 
     public async load(id: string) {
-        return this.productSchema.findById(id);
+        return this.productSchema.findById(id).lean();
     }
 
     public update(id: string, values: any, callback: any) {
@@ -36,7 +36,7 @@ export default class ProductService implements EntityService {
 
         if (!loadedProduct) {
             return new Promise((resolve, reject) => {
-                reject('item_not_exists');
+                reject("item_not_exists");
             });
         }
 
