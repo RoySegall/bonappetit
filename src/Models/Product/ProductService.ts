@@ -13,6 +13,10 @@ export default class ProductService implements EntityService {
         this.productSchema = product;
     }
 
+    public getProduct() {
+        return this.productSchema;
+    }
+
     public async getAll() {
         return await this.productSchema.find({}).lean();
     }
