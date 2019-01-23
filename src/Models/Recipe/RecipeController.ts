@@ -1,27 +1,24 @@
-import * as express from "express";
 import BaseController from "../../Base/BaseController";
-import ProductService from "./ProductService";
+import RecipeService from "./RecipeService";
+import * as express from "express";
 
-export default class ProductController extends BaseController {
+
+export default class RecipeController extends BaseController {
 
     /**
      * The productSchema service.
      */
-    protected productService: ProductService;
+    protected recipeService: RecipeService;
 
     constructor() {
         super();
-
-        this.productService = new ProductService();
+        this.recipeService = new RecipeService();
     }
 
-    /**
-     * Defining the routes.
-     */
-    public routes() {
-        this.router.get("/products", async (req: express.Request, res: express.Response) => {
+    routes() {
+        this.router.get("/recipes", async (req: express.Request, res: express.Response) => {
             try {
-                const products = await this.productService.getAll();
+                const products = await this.recipeService.getAll();
                 res.status(200).send(products);
             } catch (e) {
                 BaseController.generalError(res);
@@ -29,8 +26,8 @@ export default class ProductController extends BaseController {
             }
         });
 
-        this.router.get("/product/:id", async (req: express.Request, res: express.Response) => {
-            const loadedProduct = await this.productService.load(req.params.id);
+        this.router.get("/recipe/:id", async (req: express.Request, res: express.Response) => {
+            const loadedProduct = await this.recipeService.load(req.params.id);
 
             if (!loadedProduct) {
                 res
@@ -42,8 +39,8 @@ export default class ProductController extends BaseController {
             res.status(200).send(loadedProduct);
         });
 
-        this.router.patch("/product/:id", async (req: express.Request, res: express.Response) => {
-            this.productService.update(req.params.id, req.body, (err, product) => {
+        this.router.patch("/recipe/:id", async (req: express.Request, res: express.Response) => {
+            this.recipeService.update(req.params.id, req.body, (err, product) => {
                 if (err) {
                     BaseController.generalError(res, BaseController.handleMongooseError(err));
                     return;
@@ -53,16 +50,16 @@ export default class ProductController extends BaseController {
             });
         });
 
-        this.router.post("/product", async (req: express.Request, res: express.Response) => {
+        this.router.post("/recipe", async (req: express.Request, res: express.Response) => {
             try {
-                res.status(201).send(await this.productService.create(req.body));
+                res.status(201).send(await this.recipeService.create(req.body));
             } catch (e) {
                 BaseController.generalError(res, BaseController.handleMongooseError(e.errors));
             }
         });
 
-        this.router.delete("/product/:id", async (req: express.Request, res: express.Response) => {
-            this.productService.delete(req.params.id)
+        this.router.delete("/recipe/:id", async (req: express.Request, res: express.Response) => {
+            this.recipeService.delete(req.params.id)
                 .then(() => {
                     res.status(200).send({message: "removed"});
                 })
@@ -76,4 +73,5 @@ export default class ProductController extends BaseController {
                 });
         });
     }
+
 }
