@@ -1,9 +1,9 @@
 import * as mongoose from "mongoose";
 import Settings from "../../../Base/Settings";
-import RecipeService from "../RecipeService";
-import RecipeSchema from "../RecipeSchema";
-import ProductService from "../../Product/ProductService";
 import ProductSchema from "../../Product/ProductSchema";
+import ProductService from "../../Product/ProductService";
+import RecipeSchema from "../RecipeSchema";
+import RecipeService from "../RecipeService";
 
 const recipeService = new RecipeService();
 const productService = new ProductService();
@@ -23,9 +23,9 @@ describe("Recipe service", () => {
         recipeService.setRecipe(mongoose.model("Recipe", RecipeSchema, recipeCollection));
         productService.setProduct(mongoose.model("Product", ProductSchema, productCollection));
 
-        products.egg = await productService.create({name: 'Egg'});
-        products.butter = await productService.create({name: 'Butter'});
-        products.salt = await productService.create({name: 'Salt'});
+        products.egg = await productService.create({name: "Egg"});
+        products.butter = await productService.create({name: "Butter"});
+        products.salt = await productService.create({name: "Salt"});
     });
 
     test("Testing crud operations", async () => {
@@ -42,27 +42,27 @@ describe("Recipe service", () => {
                 {
                     product_id: products.egg._id,
                     amount: 2,
-                    quantity: 'pieces',
+                    quantity: "pieces",
                 },
                 {
                     product_id: products.butter._id,
                     amount: 5,
-                    quantity: 'gram',
+                    quantity: "gram",
                 },
                 {
                     product_id: products.salt._id,
                     amount: 1,
-                    quantity: 'tbs',
+                    quantity: "tbs",
                 },
             ],
             steps: [
-                {text: 'Take a pan and hit it'},
-                {text: 'Crack two eggs into a bowel'},
-                {text: 'Add the salt'},
-                {text: 'scramble them together'},
-                {text: 'Once the pan is hot, poor the scramble eggs to the pan'},
-                {text: 'Wait until the scramble eggs solid on the back side and flip it'},
-                {text: 'Repeat again on the previous step'}
+                {text: "Take a pan and hit it"},
+                {text: "Crack two eggs into a bowel"},
+                {text: "Add the salt"},
+                {text: "scramble them together"},
+                {text: "Once the pan is hot, poor the scramble eggs to the pan"},
+                {text: "Wait until the scramble eggs solid on the back side and flip it"},
+                {text: "Repeat again on the previous step"},
             ],
         });
 

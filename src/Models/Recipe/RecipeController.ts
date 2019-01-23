@@ -1,7 +1,6 @@
+import * as express from "express";
 import BaseController from "../../Base/BaseController";
 import RecipeService from "./RecipeService";
-import * as express from "express";
-
 
 export default class RecipeController extends BaseController {
 
@@ -15,7 +14,7 @@ export default class RecipeController extends BaseController {
         this.recipeService = new RecipeService();
     }
 
-    routes() {
+    public routes() {
         this.router.get("/recipes", async (req: express.Request, res: express.Response) => {
             try {
                 const products = await this.recipeService.getAll();
