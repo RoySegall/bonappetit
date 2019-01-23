@@ -8,7 +8,7 @@
     "dev": "nodemon -L",
     "start": "node ./dist/server.js",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "unit-test": "npx jest"
+    "unit-test": "npx jest --runInBand"
   },
   "author": "",
   "license": "ISC",

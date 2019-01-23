@@ -102,7 +102,7 @@ describe("Recipe service", () => {
             // Removing the recipeCollection we created and closing the connection to the DB.
             await mongoose.connection.db.dropCollection(recipeCollection);
             await mongoose.connection.db.dropCollection(productCollection);
-            
+
             mongoose.disconnect(done);
         } catch (e) {
             console.error(e);
