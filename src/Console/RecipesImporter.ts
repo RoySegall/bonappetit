@@ -34,12 +34,9 @@ export default class RecipesImporter extends ImportBase {
 
             const recipes = JSON.parse(this.getAsset("recipes.json"));
 
-            for (let i = 0; i < recipes.length; i++) {
-
-                const ingredients = recipes[i].ingredients;
-
-                for (let j = 0; j < ingredients.length; j++) {
-                    recipes[i].ingredients[j].product_id = map[ingredients[j].product_id];
+            for (const recipe of recipes) {
+                for (const ingredient of recipe.ingredients) {
+                    ingredient.product_id = map[ingredient.product_id];
                 }
             }
 
