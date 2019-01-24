@@ -1,5 +1,4 @@
 import app from "./app";
-const PORT = 3000;
 import * as mongoose from "mongoose";
 import Settings from "./Base/Settings";
 
@@ -12,3 +11,9 @@ mongoose.connect(Settings.get().MONGO_URL)
     .catch((error) => {
         console.error(error);
     });
+
+process.on('SIGINT', async () => {
+    await mongoose.disconnect();
+    console.log('Disconnecting');
+    process.exit();
+});

@@ -1,4 +1,4 @@
-interface EntityService {
+export default interface EntityService {
 
     /**
      * Get all the items from the DB.

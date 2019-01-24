@@ -1,3 +1,5 @@
+import EntityService from './EntityService';
+
 export default abstract class AbstractEntityService implements EntityService {
 
     public abstract getSchema();

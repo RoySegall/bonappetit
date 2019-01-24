@@ -1,5 +1,6 @@
 import * as mongoose from "mongoose";
 import AbstractEntityService from "../../Base/AbstractEntityService";
+import EntityService from "../../Base/AbstractEntityService";
 import ProductSchema from "./ProductSchema";
 
 export default class ProductService extends AbstractEntityService implements EntityService {
