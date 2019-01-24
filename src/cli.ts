@@ -1,5 +1,7 @@
 import * as commander from "commander";
 import ImporterCommand from "./Console/ImporterCommand";
+import * as mongoose from "mongoose";
+import Settings from "./Base/Settings";
 
 commander
     .command("migrate-list")
@@ -8,4 +10,17 @@ commander
         (new ImporterCommand()).getList();
     });
 
-commander.parse(process.argv);
+commander
+    .command('migrate <importer>')
+    .description('Importing stuff. Pass "all" for all the items or the machine name.')
+    .action((importer) => {
+        (new ImporterCommand()).importItems(importer);
+    });
+
+mongoose.connect(Settings.get().MONGO_URL).then(async () => {
+    commander.parse(process.argv);
+    await mongoose.disconnect();
+
+}).catch((error) => {
+    console.error(error);
+});

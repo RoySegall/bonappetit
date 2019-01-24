@@ -10,7 +10,7 @@ export default class ImporterCommand {
 
     constructor() {
         this.importers = {
-            items: new ProductsImporter(),
+            products: new ProductsImporter(),
             recipes: new RecipesImporter(),
         };
     }
@@ -27,6 +27,24 @@ export default class ImporterCommand {
 
             console.log(`${name}(${machineName}): ${description}`);
         }));
+    }
+
+    public importItems(item: string) {
+        let importers;
+
+        if (item === "all") {
+            importers = Object.keys(this.importers);
+        }
+        else {
+            importers = Object.keys(this.importers).filter((key) => {
+                return key === item;
+            });
+        }
+
+        importers.map((key) => {
+            this.importers[key].clear();
+            this.importers[key].importData();
+        });
     }
 
 }
