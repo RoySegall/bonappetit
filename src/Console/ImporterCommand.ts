@@ -1,7 +1,5 @@
 import ProductsImporter from "./ProductsImporter";
 import RecipesImporter from "./RecipesImporter";
-import * as inquirer from "inquirer";
-
 
 export default class ImporterCommand {
 
@@ -12,24 +10,24 @@ export default class ImporterCommand {
 
     constructor() {
         this.importers = {
-            'items': new ProductsImporter(),
-            'recipes': new RecipesImporter(),
+            items: new ProductsImporter(),
+            recipes: new RecipesImporter(),
         };
+
     }
 
-    getList() {
-        const questions = [
-            {
-                type: "list",
-                name: "EXTENSION",
-                message: "What is the file extension?",
-                choices: Object.keys(this.importers) + ["a", "a"],
-                filter: function(val) {
-                    return val.split(".")[1];
-                }
-            }
-        ];
-        return inquirer.prompt(questions);
+    public getList() {
+        const chalk = require("chalk");
+
+        (Object.keys(this.importers).map((item) => {
+            const [name, machineName, description] = [
+                chalk.blue(this.importers[item].getName()),
+                chalk.yellow(item),
+                chalk.green(this.importers[item].getDescription()),
+            ];
+
+            console.log(`${name}(${machineName}): ${description}`);
+        }));
     }
 
 }
