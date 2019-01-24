@@ -8,8 +8,8 @@ import RecipeService from "../RecipeService";
 const recipeService = new RecipeService();
 const productService = new ProductService();
 
-const recipeCollection = "recipe_test";
-const productCollection = "product_test";
+const recipeCollection = "recipe_test" + (new Date()).getTime();
+const productCollection = "product_test" + (new Date()).getTime();
 
 const products: any = {};
 

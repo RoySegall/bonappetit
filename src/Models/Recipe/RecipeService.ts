@@ -1,7 +1,7 @@
 import * as mongoose from "mongoose";
 import AbstractEntityService from "../../Base/AbstractEntityService";
-import RecipeSchema from "./RecipeSchema";
 import EntityService from "../../Base/EntityService";
+import RecipeSchema from "./RecipeSchema";
 
 export default class RecipeService extends AbstractEntityService implements EntityService {
 

@@ -4,7 +4,7 @@ import ProductSchema from "../ProductSchema";
 import ProductService from "../ProductService";
 
 const productService = new ProductService();
-const collection = "product_test";
+const collection = "product_test_" + (new Date()).getTime();
 
 describe("Product service", () => {
 

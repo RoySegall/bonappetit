@@ -1,5 +1,5 @@
-import app from "./app";
 import * as mongoose from "mongoose";
+import app from "./app";
 import Settings from "./Base/Settings";
 
 mongoose.connect(Settings.get().MONGO_URL)
@@ -12,8 +12,8 @@ mongoose.connect(Settings.get().MONGO_URL)
         console.error(error);
     });
 
-process.on('SIGINT', async () => {
+process.on("SIGINT", async () => {
     await mongoose.disconnect();
-    console.log('Disconnecting');
+    console.log("Disconnecting");
     process.exit();
 });

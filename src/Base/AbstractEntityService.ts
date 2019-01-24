@@ -1,4 +1,4 @@
-import EntityService from './EntityService';
+import EntityService from "./EntityService";
 
 export default abstract class AbstractEntityService implements EntityService {
 
