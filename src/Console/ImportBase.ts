@@ -1,6 +1,6 @@
+import * as fs from "fs";
 import * as mongoose from "mongoose";
-import * as fs from "fs"
-import * as path from "path"
+import * as path from "path";
 
 export default abstract class ImportBase {
 
@@ -16,18 +16,18 @@ export default abstract class ImportBase {
         return this.description;
     }
 
-    protected chalk() {
-        return require("chalk");
-    }
-
     public abstract importData();
 
     public clear() {
-        // console.log(this.chalk().yellow(`Cleaning ${this.collectionName}`));
-        //
-        // mongoose.connection.db.collection(this.collectionName).deleteMany({});
-        //
-        // console.log(this.chalk().green("Cleaned!"))
+        console.log(this.chalk().yellow(`Cleaning ${this.collectionName}`));
+
+        mongoose.connection.db.collection(this.collectionName).deleteMany({});
+
+        console.log(this.chalk().green("Cleaned!"));
+    }
+
+    protected chalk() {
+        return require("chalk");
     }
 
     protected getAsset(name: string) {

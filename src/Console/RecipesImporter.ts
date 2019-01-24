@@ -1,44 +1,52 @@
-import ImportBase from "./ImportBase";
-import * as mongoose from "mongoose";
 import ProductService from "../Models/Product/ProductService";
 import RecipeService from "../Models/Recipe/RecipeService";
+import ImportBase from "./ImportBase";
 
 export default class RecipesImporter extends ImportBase {
 
     protected name = "Import recipes";
     protected description = "Import the recipes";
 
+    protected RecipeService: any;
+    protected ProductService: any;
+
     constructor() {
         super();
 
-        this.collectionName = new RecipeService().getSchema().collection.name;
+        this.RecipeService = new RecipeService();
+        this.ProductService = new ProductService();
+
+        this.collectionName = this.RecipeService.getSchema().collection.name;
     }
 
     public async importData() {
+        const allProducts: any = (await this.ProductService.getAll());
+
+        const map = {};
+
+        for (let i = 0; i < Object.keys(allProducts).length; i++) {
+            map[allProducts[i].name] = allProducts[i]._id;
+        }
+
         return new Promise(async (resolve, reject) => {
 
             console.log(this.chalk().yellow("Starting to import recipes"));
 
-            const recipes = JSON.parse(this.getAsset('recipes.json'));
-            const ps = new ProductService();
+            const recipes = JSON.parse(this.getAsset("recipes.json"));
 
-            const foo = await ps.loadByName('Butter');
+            for (let i = 0; i < recipes.length; i++) {
+
+                const ingredients = recipes[i].ingredients;
+
+                for (let j = 0; j < ingredients.length; j++) {
+                    recipes[i].ingredients[j].product_id = map[ingredients[j].product_id];
+                }
+            }
+
+            this.RecipeService.getSchema().collection.insertMany(recipes);
 
             console.log(this.chalk().yellow("Done! all recipes have been imported"));
-            recipes.forEach((recipe) => {
-
-                // recipe.ingredients.forEach(async (ingredient) => {
-                //     try {
-                //         ingredient.product_id = await ps.loadByName('Butter');
-                //     } catch (error) {
-                //         console.error(error);
-                //     }
-                // });
-            });
-
-            // console.log(recipes);
             resolve();
-            //
         });
     }
 }

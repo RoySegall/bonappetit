@@ -1,6 +1,6 @@
+import * as mongoose from "mongoose";
 import ProductsImporter from "./ProductsImporter";
 import RecipesImporter from "./RecipesImporter";
-import * as mongoose from "mongoose";
 
 export default class ImporterCommand {
 
@@ -30,27 +30,22 @@ export default class ImporterCommand {
         }));
     }
 
-    public importItems(item: string) {
-        return new Promise(async (resolve, reject) => {
-            let importers;
+    public async importItems(item: string) {
 
-            if (item === "all") {
-                importers = Object.keys(this.importers);
-            }
-            else {
-                importers = Object.keys(this.importers).filter((key) => {
-                    return key === item;
-                });
-            }
+        let importers;
 
-            importers.map((key) => {
-                this.importers[key].clear();
-                this.importers[key].importData().then(() => {
-                    mongoose.disconnect();
-                });
+        if (item === "all") {
+            importers = Object.keys(this.importers);
+        } else {
+            importers = Object.keys(this.importers).filter((key) => {
+                return key === item;
             });
-        });
+        }
 
+        return Promise.all(importers.map(async (key) => {
+            this.importers[key].clear();
+            await this.importers[key].importData();
+        }));
     }
 
 }

@@ -1,6 +1,6 @@
-import ImportBase from "./ImportBase";
-import ProductService from "../Models/Product/ProductService";
 import * as mongoose from "mongoose";
+import ProductService from "../Models/Product/ProductService";
+import ImportBase from "./ImportBase";
 
 export default class ProductsImporter extends ImportBase {
 
@@ -20,7 +20,7 @@ export default class ProductsImporter extends ImportBase {
             .connection
             .db
             .collection(this.collectionName)
-            .insertMany(JSON.parse(this.getAsset('products.json')));
+            .insertMany(JSON.parse(this.getAsset("products.json")));
 
         console.log(this.chalk().yellow("Done! all products have been imported"));
     }
