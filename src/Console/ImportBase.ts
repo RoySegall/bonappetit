@@ -23,11 +23,11 @@ export default abstract class ImportBase {
     public abstract importData();
 
     public clear() {
-        console.log(this.chalk().yellow(`Cleaning ${this.collectionName}`));
-
-        mongoose.connection.db.collection(this.collectionName).deleteMany({});
-
-        console.log(this.chalk().green("Cleaned!"))
+        // console.log(this.chalk().yellow(`Cleaning ${this.collectionName}`));
+        //
+        // mongoose.connection.db.collection(this.collectionName).deleteMany({});
+        //
+        // console.log(this.chalk().green("Cleaned!"))
     }
 
     protected getAsset(name: string) {

@@ -13,14 +13,9 @@ commander
 commander
     .command('migrate <importer>')
     .description('Importing stuff. Pass "all" for all the items or the machine name.')
-    .action((importer) => {
-        (new ImporterCommand()).importItems(importer);
+    .action(async (importer) => {
+        await mongoose.connect(Settings.get().MONGO_URL);
+        await (new ImporterCommand()).importItems(importer);
     });
 
-mongoose.connect(Settings.get().MONGO_URL).then(async () => {
-    commander.parse(process.argv);
-    await mongoose.disconnect();
-
-}).catch((error) => {
-    console.error(error);
-});
+commander.parse(process.argv);

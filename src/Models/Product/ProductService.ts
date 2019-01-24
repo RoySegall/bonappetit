@@ -25,4 +25,8 @@ export default class ProductService extends AbstractEntityService implements Ent
         return this.productSchema;
     }
 
+    public async loadByName(name: string) {
+        return this.getSchema().findOne({name: name});
+    }
+
 }
