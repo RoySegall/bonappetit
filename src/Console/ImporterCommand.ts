@@ -13,7 +13,6 @@ export default class ImporterCommand {
             items: new ProductsImporter(),
             recipes: new RecipesImporter(),
         };
-
     }
 
     public getList() {
