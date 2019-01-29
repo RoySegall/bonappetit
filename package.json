@@ -16,9 +16,14 @@
   "dependencies": {
     "@types/express": "^4.16.0",
     "body-parser": "^1.18.3",
+    "chalk": "^2.4.2",
+    "commander": "^2.19.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "mongoose": "^5.4.5"
+    "figlet": "^1.2.1",
+    "inquirer": "^6.2.1",
+    "mongoose": "^5.4.5",
+    "shelljs": "^0.8.3"
   },
   "devDependencies": {
     "@types/jest": "^23.3.13",
