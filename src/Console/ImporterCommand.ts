@@ -16,6 +16,9 @@ export default class ImporterCommand {
         };
     }
 
+    /**
+     * Get list of importers.
+     */
     public getList() {
         const chalk = require("chalk");
 
@@ -30,20 +33,28 @@ export default class ImporterCommand {
         }));
     }
 
+    /**
+     * Import items in from a collection of migration file.
+     *
+     * @param item
+     */
     public async importItems(item: string) {
 
         let importers;
 
         if (item === "all") {
+            // We decided to import all the items.
             importers = Object.keys(this.importers);
         } else {
+            // Filter the items collection we don't want to import.
             importers = Object.keys(this.importers).filter((key) => {
                 return key === item;
             });
         }
 
+        // Go over the mappers and run the import method.
         return Promise.all(importers.map(async (key) => {
-            this.importers[key].clear();
+            this.importers[key].clearCollection();
             await this.importers[key].importData();
         }));
     }

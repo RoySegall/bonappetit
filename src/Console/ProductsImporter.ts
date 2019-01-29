@@ -16,6 +16,7 @@ export default class ProductsImporter extends ImportBase {
     public importData() {
         console.log(this.chalk().yellow("Starting to import products"));
 
+        // We don't need to process the items so we just insert them to the collection.
         mongoose
             .connection
             .db

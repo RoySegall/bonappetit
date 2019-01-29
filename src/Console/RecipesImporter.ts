@@ -20,10 +20,12 @@ export default class RecipesImporter extends ImportBase {
     }
 
     public async importData() {
+        // Pull all the products at once from the DB.
         const allProducts: any = (await this.ProductService.getAll());
 
         const map = {};
 
+        // Map the items to a name: id object
         for (let i = 0; i < Object.keys(allProducts).length; i++) {
             map[allProducts[i].name] = allProducts[i]._id;
         }
@@ -36,10 +38,12 @@ export default class RecipesImporter extends ImportBase {
 
             for (const recipe of recipes) {
                 for (const ingredient of recipe.ingredients) {
+                    // Replace the name of the product with the ID.
                     ingredient.product_id = map[ingredient.product_id];
                 }
             }
 
+            // Insert them at once to the collection.
             this.RecipeService.getSchema().collection.insertMany(recipes);
 
             console.log(this.chalk().yellow("Done! all recipes have been imported"));

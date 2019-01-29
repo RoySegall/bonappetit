@@ -18,7 +18,7 @@ export default abstract class ImportBase {
 
     public abstract importData();
 
-    public clear() {
+    public clearCollection() {
         console.log(this.chalk().yellow(`Cleaning ${this.collectionName}`));
 
         mongoose.connection.db.collection(this.collectionName).deleteMany({});
