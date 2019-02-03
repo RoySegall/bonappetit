@@ -19,13 +19,16 @@ before_script:
   # Setting up front server.
   - cd front
   - npm i
-  - npm run test-coverage
-  - npm run lint
+  - cd -
+
 
 script:
   # Testing the server.
   - cd server
   - npm run lint
   - npm run unit-test
+  - cd -
 
-  # TBD: Testing the front
+  # Testing the front
+  - npm run test-coverage
+  - npm run lint
