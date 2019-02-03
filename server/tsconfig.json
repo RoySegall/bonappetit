@@ -10,6 +10,8 @@
     "baseUrl": "./src",
     "alwaysStrict": true
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "server/src/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }
