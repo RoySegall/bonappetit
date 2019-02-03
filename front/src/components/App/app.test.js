@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from './';
+import App from './App';
 
 it('Test example', () => {
   const wrapper = shallow(<App>test</App>);
