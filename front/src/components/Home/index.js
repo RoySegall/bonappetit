@@ -1,10 +1,7 @@
 import React from 'react';
-import styles from './styles.scss';
 import Link from 'react-router/lib/Link';
 
-
 class Home extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -17,8 +14,10 @@ class Home extends React.Component {
   }
 
   handleClick(event) {
-    this.setState({name: event.target.dataset.name});
-  };
+    this.setState({
+      name: event.target.dataset.name,
+    });
+  }
 
   render() {
     return (
@@ -27,9 +26,12 @@ class Home extends React.Component {
           Name: {this.state.name}
           <br />
           <br />
-          <a data-name="Roy" onClick={this.handleClick}>Roy</a>
-          &nbsp;
-          <a data-name="Noy" onClick={this.handleClick}>Noy</a>
+          <a data-name="Roy" onClick={this.handleClick} role="link" tabIndex={0}>
+            Roy
+          </a>
+          <a data-name="Noy" onClick={this.handleClick} role="link" tabIndex={0}>
+            Noy
+          </a>
         </form>
 
         <Link to="/tools">Go to tools</Link>

@@ -4,9 +4,7 @@ import styles from './styles.scss';
 function Tools() {
   return (
     <ul>
-      <li className={styles.tool}>
-        Tools
-      </li>
+      <li className={styles.tool}>Tools</li>
     </ul>
   );
 }
