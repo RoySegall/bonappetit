@@ -30,5 +30,7 @@ script:
   - cd -
 
   # Testing the front
+  - cd front
   - npm run test-coverage
   - npm run lint
+  - cd -
