@@ -1,11 +1,17 @@
 language: node_js
 node_js: 8.11.1
 services: mongodb
+
+cache:
+  directories:
+    - /home/travis/build/RoySegall/bonappetit/server/node_modules
+
 before_script:
   - npm i -g tslint typescript ts-node
   - npm i -D jest typescript
   - npm i -D ts-jest @types/jest
-  - cp .env.travis .env
+  - cp server/.env.travis server/.env
+
 script:
   - cd server
   - npm run lint
