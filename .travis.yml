@@ -7,12 +7,20 @@ cache:
     - /home/travis/build/RoySegall/bonappetit/server/node_modules
 
 before_script:
+  # Setting up server.
+  - cd server
   - npm i -g tslint typescript ts-node
   - npm i -D jest typescript
   - npm i -D ts-jest @types/jest
-  - cp server/.env.travis server/.env
+  - cp .env.travis .env
+  - cd -
+
+  # TBD: Setting up front server.
 
 script:
+  # Testing the server.
   - cd server
   - npm run lint
   - npm run unit-test
+
+  # TBD: Testing the front
