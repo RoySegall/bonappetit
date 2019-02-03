@@ -5,6 +5,7 @@ services: mongodb
 cache:
   directories:
     - /home/travis/build/RoySegall/bonappetit/server/node_modules
+    - /home/travis/build/RoySegall/bonappetit/front/node_modules
 
 before_script:
   # Setting up server.
@@ -15,7 +16,11 @@ before_script:
   - cp .env.travis .env
   - cd -
 
-  # TBD: Setting up front server.
+  # Setting up front server.
+  - cd front
+  - npm i
+  - npm run test-coverage
+  - npm run lint
 
 script:
   # Testing the server.

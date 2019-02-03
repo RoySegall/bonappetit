@@ -1,3 +1,5 @@
 server/node_modules
+front/node_modules
+front/build
 .idea
 server/.env
