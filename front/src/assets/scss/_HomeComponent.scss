@@ -1,13 +1,51 @@
 // Styling for the download section
 .HomeComponent {
 
-    form {
-        text-align: center;
-        width: 75vh;
-        margin: 2em auto;
+  h3 {
+    font-size: 2em;
+  }
 
-        hr {
-            width: 75%;
-        }
+  form {
+    text-align: center;
+    width: 75vh;
+    margin: 2em auto;
+
+    hr {
+      width: 75%;
     }
+
+    .products-wrapper {
+      padding-top: 1.5em;
+
+      label {
+        font-weight: bold;
+      }
+
+      .products {
+        padding-top: .5em;
+
+        button {
+          display: inline-flex;
+          margin-right: .5em;
+          margin-bottom: .5em;
+          font-size: 1.25em;
+          padding: .5em 1em;
+          border: #ccc solid 1px;
+          border-radius: .25em;
+          color: #333;
+          background-color: #fff;
+
+          &:hover {
+            color: #333;
+            background-color: #e6e6e6;
+            border-color: #adadad;
+          }
+
+          &:focus {
+            outline: -webkit-focus-ring-color auto 5px;
+          }
+        }
+      }
+    }
+  }
 }
