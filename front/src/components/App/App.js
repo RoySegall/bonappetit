@@ -4,7 +4,10 @@ import styles from './styles.scss';
 function App({ children }) {
   return (
     <div>
-      <div className={styles.content}>
+      <div className={styles.root}>
+        <div className={styles.inner}>
+          sasad
+        </div>
         {children}
       </div>
     </div>
