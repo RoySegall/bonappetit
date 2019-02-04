@@ -30,7 +30,7 @@ export default class Home extends React.Component<RouteComponentProps, any, any>
 
     render() {
         return (
-            <div>
+            <div className="HomeComponent">
                 <Info products={this.state.products} recipes={this.state.recipes} />
                 <SearchForm products={this.state.products} recipes={this.state.recipes} />
             </div>

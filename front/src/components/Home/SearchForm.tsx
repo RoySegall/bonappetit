@@ -5,7 +5,8 @@ export default class SearchForm extends React.Component<any, any> {
     render() {
         return (
             <form>
-                asdasd
+                <h3>Search recipes</h3>
+                <hr />
             </form>
         )
     }
