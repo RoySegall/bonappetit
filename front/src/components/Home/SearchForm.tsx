@@ -5,11 +5,19 @@ export default class SearchForm extends React.Component<any, any> {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            selected: {}
+        };
     }
 
-    handleProductSelection = (event) => {
+    handleProductSelection = (event, id) => {
         event.preventDefault();
+
+        let selected = this.state.selected;
+
+        selected[id] = true;
+
+        this.setState({selected});
     };
 
     render() {
@@ -26,7 +34,7 @@ export default class SearchForm extends React.Component<any, any> {
                     <div className="products" id="products">
 
                         {this.props.products.map((product, key) => {
-                            return <button key={key} id={product.id} onClick={this.handleProductSelection}>{product.name}</button>
+                            return <button key={key} id={product.id} onClick={(e) => this.handleProductSelection(e, product._id)}>{product.name}</button>
                         })}
                     </div>
                 </div>
