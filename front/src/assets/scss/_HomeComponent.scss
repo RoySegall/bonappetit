@@ -1,17 +1,67 @@
 // Styling for the download section
 .HomeComponent {
 
-  h3 {
-    font-size: 2em;
+  .info {
+    text-align: center;
+    margin: 0 auto;
+    background: #fdcc52;
+    background: linear-gradient(#fdcc52, #fdc539);
+    padding: 3em 0;
+
+    h2 {
+      font-size: 50px;
+    }
   }
 
   form {
-    text-align: center;
-    width: 75vh;
+
+    h3 {
+      font-size: 2em;
+    }
+
     margin: 2em auto;
 
     hr {
       width: 75%;
+    }
+
+    .diets-wrapper {
+      padding-top: 1.5em;
+
+      label {
+        font-weight: bold;
+      }
+
+      .diets {
+
+        button {
+          font-size: 1.25em;
+          margin-left: .25em;
+          border-bottom: dashed 1px $brand-facebook;
+
+          &.selected {
+            border-radius: .25em;
+
+            &.carnivore {
+              background: #ff8282;
+              color: #5e1c1c;
+              border: solid 1px #8c1313;
+            }
+
+            &.vegan {
+              background: #abf9ab;
+              color: #095600;
+              border: solid 1px #70b973;
+            }
+
+            &.vegetarian {
+              background: #ffd882;
+              color: #5e4a1c;
+              border: solid 1px #8c6613;
+            }
+          }
+        }
+      }
     }
 
     .products-wrapper {
@@ -24,27 +74,50 @@
       .products {
         padding-top: .5em;
 
+        .fa-check {
+          padding-right: 0.25em;
+          color: #28a745;
+        }
+
+        .reset-button {
+
+          &:hover {
+            color: white;
+          }
+        }
+
         button {
-          display: inline-flex;
           margin-right: .5em;
           margin-bottom: .5em;
-          font-size: 1.25em;
-          padding: .5em 1em;
-          border: #ccc solid 1px;
-          border-radius: .25em;
-          color: #333;
-          background-color: #fff;
+          border-radius: 0.5em;
 
           &:hover {
             color: #333;
-            background-color: #e6e6e6;
-            border-color: #adadad;
+            border-color: $theme-primary;
           }
 
           &:focus {
-            outline: -webkit-focus-ring-color auto 5px;
+            border-color: inherit;
+          }
+
+          &.selected {
+            border-color: #28a745;
           }
         }
+      }
+    }
+
+    .actions {
+      margin-top: 1em;
+
+      .alert.alert-danger {
+        margin: 1.5em auto;
+        width: 95vh;
+      }
+
+      button {
+        margin-right: .25em;
+        border-radius: .25em;
       }
     }
   }
