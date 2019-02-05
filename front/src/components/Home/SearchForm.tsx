@@ -24,6 +24,7 @@ export default class SearchForm extends React.Component<any, any> {
                     icon: 'fas fa-drumstick-bite',
                 },
             ],
+            strategy: 'exact',
             diet: '',
             formError: ''
         };
@@ -68,6 +69,7 @@ export default class SearchForm extends React.Component<any, any> {
             selected: {},
             diet: '',
             formError: '',
+            strategy: 'exact',
         });
     };
 
@@ -83,6 +85,12 @@ export default class SearchForm extends React.Component<any, any> {
         }
 
         this.setState({formError: 'Please select some products'});
+    };
+
+    selectStrategy = (event, strategy) => {
+        event.preventDefault();
+
+        this.setState({strategy});
     };
 
     render() {
@@ -142,6 +150,40 @@ export default class SearchForm extends React.Component<any, any> {
                                     )
                                 })}
                             </div>
+                        </div>
+
+                        <div className="searching-strategy">
+
+                            <label htmlFor="searching-strategy">How would you like to combine the products?</label>
+
+                            <div className="selections">
+                                <a
+                                    href="#"
+                                    onClick={(e) => this.selectStrategy(e, 'exact')}
+                                    className={this.state.strategy === 'exact' ? "selected" : ''}
+                                >
+                                    <i className={this.state.strategy === 'exact' ? "far fa-check-square" : 'far fa-square'}></i>
+                                    Only selected products
+                                </a>
+
+                                <a
+                                    href="#"
+                                    onClick={(e) => this.selectStrategy(e, 'contains')}
+                                    className={this.state.strategy === 'contains' ? "selected" : ''}
+                                >
+                                    <i className={this.state.strategy === 'contains' ? "far fa-check-square" : 'far fa-square'}></i>
+                                    Selected products and more
+                                </a>
+                            </div>
+
+                            <p className="explain">
+                                This will assure that only recipes which contains the selected items,<b>
+                            { this.state.strategy === 'exact' ?
+                                ' and not more or less' :
+                                ' and some other products as well'
+                            }
+                            </b>, will be picked
+                            </p>
                         </div>
 
                         <div className="actions">

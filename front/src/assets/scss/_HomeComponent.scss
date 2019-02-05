@@ -90,6 +90,7 @@
           margin-right: .5em;
           margin-bottom: .5em;
           border-radius: 0.5em;
+          font-size: 1.15em;
 
           &:hover {
             color: #333;
@@ -104,6 +105,46 @@
             border-color: #28a745;
           }
         }
+      }
+    }
+
+    .searching-strategy {
+      padding-top: 1.5em;
+      display: block;
+
+      label {
+        font-weight: bold;
+        display: block;
+      }
+
+      .selections {
+
+        a {
+          margin-left: 1.5em;
+          color: black;
+          padding: 0 1em .5em 1em;
+          font-size: 1.25em;
+
+          .far {
+            padding-right: .25em;
+          }
+
+          &.selected {
+            border-bottom: solid 1px #ccc;
+
+            .far {
+              color: green;
+            }
+          }
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+
+      .explain {
+        padding-top: 1em;
       }
     }
 
