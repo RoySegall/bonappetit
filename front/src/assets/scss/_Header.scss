@@ -4,8 +4,11 @@ header {
   background: -webkit-linear-gradient(to left, $theme-secondary, $theme-tertiary);
   background: linear-gradient(to left, $theme-secondary, $theme-tertiary);
   color: $theme-primary;
-  height: 7.5vh;
+  height: 10vh;
   padding-top: 3vh;
-  font-size: 1.5em;
-  text-align: center;
+  font-size: 3em;
+
+  &.navbar {
+    justify-content: center;
+  }
 }
