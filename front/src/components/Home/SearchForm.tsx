@@ -24,12 +24,21 @@ export default class SearchForm extends React.Component<any, any> {
                     icon: 'fas fa-drumstick-bite',
                 },
             ],
+            cloned_products: props.products,
             strategy: 'exact',
             diet: '',
             formError: ''
         };
     }
 
+    /**
+     * Marking a product as selected.
+     *
+     * @param event
+     *  The event object.
+     * @param id
+     *  The ID of the object.
+     */
     handleProductSelection = (event, id) => {
         event.preventDefault();
 
@@ -44,7 +53,13 @@ export default class SearchForm extends React.Component<any, any> {
         this.setState({selected});
     };
 
-    getClassForButton = (id) => {
+    /**
+     * Checking if a product marked as selected.
+     *
+     * @param id
+     *  The ID of the product.
+     */
+    getProductSelectionState = (id) => {
         if (this.state.selected[id] === null) {
             return false;
         }
@@ -52,16 +67,44 @@ export default class SearchForm extends React.Component<any, any> {
         return this.state.selected[id];
     };
 
+    /**
+     * Handling a diet selection action.
+     *
+     * @param event
+     *  The event object.
+     * @param diet
+     *  The diet type.
+     */
     handleDietSelection = (event, diet) => {
         event.preventDefault();
 
         if (this.state.diet === diet) {
+            // The user selected the current selected diet. Set the selected diet to none.
             diet = null;
         }
 
-        this.setState({diet})
+        // When the user select a diet we need to set the current component products as the products from the DB which
+        // passed as a property to the component.
+        let cloned_products = this.props.products;
+
+        if (diet !== null) {
+            // There is a selected diet. Filter products which does not match to the selected diet.
+            cloned_products = cloned_products.filter((item) => {
+                return item.diets.indexOf(diet) >= 0;
+            });
+        }
+
+        // Setting the diet and the filtered products, if they filtered, and clear the selected products property.
+        // We need to clear the selected because the user might selected products which not match the current diet.
+        this.setState({diet, cloned_products, selected: {}})
     };
 
+    /**
+     * Reset the form state.
+     *
+     * @param event
+     *  The event object.
+     */
     resetForm = (event) => {
         event.preventDefault();
 
@@ -73,11 +116,19 @@ export default class SearchForm extends React.Component<any, any> {
         });
     };
 
+    /**
+     * Submitting the form.
+     *
+     * @param event
+     *  The event object.
+     */
     submitForm = (event) => {
         event.preventDefault();
 
         this.setState({formError: ''});
 
+        // Checking if the user selected any product. When we got a selected product with true that mean the user
+        // selected at least one product and that's OK for us.
         for (let selected in this.state.selected) {
             if (this.state.selected[selected]) {
                 return;
@@ -87,6 +138,14 @@ export default class SearchForm extends React.Component<any, any> {
         this.setState({formError: 'Please select some products'});
     };
 
+    /**
+     * Switching between products combinations strategy.
+     *
+     * @param event
+     *  The event object.
+     * @param strategy
+     *  The strategy - exact or contains.
+     */
     selectStrategy = (event, strategy) => {
         event.preventDefault();
 
@@ -135,15 +194,15 @@ export default class SearchForm extends React.Component<any, any> {
 
                             <div className="products" id="products">
 
-                                {this.props.products.map((product, key) => {
+                                {this.state.cloned_products.map((product, key) => {
                                     return (
                                         <button
                                             key={key}
                                             id={product.id}
                                             onClick={(e) => this.handleProductSelection(e, product._id)}
-                                            className={(this.getClassForButton(product._id) ? 'selected' : '') + " btn btn-light"}
+                                            className={(this.getProductSelectionState(product._id) ? 'selected' : '') + " btn btn-light"}
                                         >
-                                            {this.getClassForButton(product._id) ? (
+                                            {this.getProductSelectionState(product._id) ? (
                                                 <i className="fas fa-check"></i>) : ''}
                                             {product.name}
                                         </button>

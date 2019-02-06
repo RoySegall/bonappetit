@@ -11,10 +11,10 @@ export default class Home extends React.Component<RouteComponentProps, any, any>
         this.state = {
             products: [
                 {
-                    "_id": "01", "name": "Egg", "diets": ['vegan', 'vegetarian', 'carnivore']
+                    "_id": "01", "name": "Egg", "diets": ['vegetarian', 'carnivore']
                 },
                 {
-                    "_id": "02", "name": "Butter", "diets": ['vegan', 'vegetarian', 'carnivore']
+                    "_id": "02", "name": "Butter", "diets": ['vegetarian', 'carnivore']
                 },
                 {
                     "_id": "03", "name": "Oil", "diets": ['vegan', 'vegetarian', 'carnivore']
@@ -26,7 +26,7 @@ export default class Home extends React.Component<RouteComponentProps, any, any>
                     "_id": "05", "name": "Cucumber", "diets": ['vegan', 'vegetarian', 'carnivore']
                 },
                 {
-                    "_id": "05", "name": "Zukini", "diets": ['vegan', 'vegetarian', 'carnivore']
+                    "_id": "051", "name": "Zukini", "diets": ['vegan', 'vegetarian', 'carnivore']
                 },
                 {
                     "_id": "06", "name": "Red Pepper", "diets": ['vegan', 'vegetarian', 'carnivore']
@@ -53,7 +53,7 @@ export default class Home extends React.Component<RouteComponentProps, any, any>
                     "_id": "13", "name": "Pholio sheet", "diets": ['vegan', 'vegetarian', 'carnivore']
                 },
                 {
-                    "_id": "14", "name": "Pizza dough", "diets": ['vegan', 'vegetarian', 'carnivore']
+                    "_id": "14", "name": "Pizza dough", "diets": ['vegetarian', 'carnivore']
                 },
                 {
                     "_id": "15", "name": "Black pepper", "diets": ['vegan', 'vegetarian', 'carnivore']
@@ -65,10 +65,10 @@ export default class Home extends React.Component<RouteComponentProps, any, any>
                     "_id": "17", "name": "Spagetti", "diets": ['vegan', 'vegetarian', 'carnivore']
                 },
                 {
-                    "_id": "18", "name": "Slamon", "diets": ['vegan', 'vegetarian', 'carnivore']
+                    "_id": "18", "name": "Slamon", "diets": ['carnivore']
                 },
                 {
-                    "_id": "19", "name": "Tuna", "diets": ['vegan', 'vegetarian', 'carnivore']
+                    "_id": "19", "name": "Tuna", "diets": ['carnivore']
                 },
                 {
                     "_id": "20", "name": "Egg plant", "diets": ['vegan', 'vegetarian', 'carnivore']
@@ -101,7 +101,7 @@ export default class Home extends React.Component<RouteComponentProps, any, any>
                     "_id": "29", "name": "Cacao", "diets": ['vegan', 'vegetarian', 'carnivore']
                 },
                 {
-                    "_id": "30", "name": "Nutella", "diets": ['vegan', 'vegetarian', 'carnivore']
+                    "_id": "30", "name": "Nutella", "diets": ['vegetarian', 'carnivore']
                 },
                 {
                     "_id": "31", "name": "Apple", "diets": ['vegan', 'vegetarian', 'carnivore']
@@ -113,7 +113,7 @@ export default class Home extends React.Component<RouteComponentProps, any, any>
                     "_id": "33", "name": "White onion", "diets": ['vegan', 'vegetarian', 'carnivore']
                 },
                 {
-                    "_id": "34", "name": "Ground beef", "diets": ['vegan', 'vegetarian', 'carnivore']
+                    "_id": "34", "name": "Ground beef", "diets": ['carnivore']
                 },
                 {
                     "_id": "35", "name": "Sweet potato", "diets": ['vegan', 'vegetarian', 'carnivore']
@@ -125,10 +125,10 @@ export default class Home extends React.Component<RouteComponentProps, any, any>
                     "_id": "37", "name": "Flower", "diets": ['vegan', 'vegetarian', 'carnivore']
                 },
                 {
-                    "_id": "38", "name": "Heavy cream", "diets": ['vegan', 'vegetarian', 'carnivore']
+                    "_id": "38", "name": "Heavy cream", "diets": ['vegetarian', 'carnivore']
                 },
                 {
-                    "_id": "39", "name": "Cream", "diets": ['vegan', 'vegetarian', 'carnivore']
+                    "_id": "39", "name": "Cream", "diets": ['vegetarian', 'carnivore']
                 },
                 {
                     "_id": "40", "name": "Mushroom", "diets": ['vegan', 'vegetarian', 'carnivore']
