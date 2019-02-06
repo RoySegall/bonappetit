@@ -97,7 +97,7 @@ export default class SearchForm extends React.Component<any, any> {
         return (
             <div>
                 <form className="row">
-                    <div className="col-md-10 mx-auto text-center">
+                    <div className="col-md-8 mx-auto text-center">
                         <h3>Search recipes</h3>
 
                         <hr/>
