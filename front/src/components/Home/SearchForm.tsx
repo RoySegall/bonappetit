@@ -1,4 +1,5 @@
 import * as React from "react";
+import {navigate} from "@reach/router";
 
 export default class SearchForm extends React.Component<any, any> {
 
@@ -131,6 +132,7 @@ export default class SearchForm extends React.Component<any, any> {
         // selected at least one product and that's OK for us.
         for (let selected in this.state.selected) {
             if (this.state.selected[selected]) {
+                navigate("/search-results");
                 return;
             }
         }

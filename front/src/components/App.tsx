@@ -2,7 +2,9 @@ import "./../assets/scss/App.scss";
 import * as React from "react";
 import Header from "./Header";
 import Home from "./Home/Home";
-import { Router } from "@reach/router"
+import SearchResults from "./SearchResults";
+import { Router } from "@reach/router";
+
 
 export default class App extends React.Component {
     render() {
@@ -12,6 +14,7 @@ export default class App extends React.Component {
                     <Header />
                     <Router>
                         <Home path="/" />
+                        <SearchResults path="search-results" />
                     </Router>
                 </div>
             </div>
