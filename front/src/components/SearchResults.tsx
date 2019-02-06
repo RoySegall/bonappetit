@@ -71,7 +71,7 @@ export default class SearchResults extends React.Component<RouteComponentProps, 
                                         </div>
                                         <p className="col-12 recipe">
                                             {result.steps.map((item, index) => {
-                                                return <span id={index}>{item.text}{index+1 === result.steps.length ? '' : ', '}</span>
+                                                return <span key={index}>{item.text}{index+1 === result.steps.length ? '' : ', '}</span>
                                             })}
                                         </p>
                                     </div>

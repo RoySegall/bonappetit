@@ -1,7 +1,8 @@
 [
   {
-    "name": "Omelette",
+    "title": "Omelette",
     "description": "Making a simple omelette",
+    "matchFor": ["Vegetarian", "Carnivore"],
     "ingredients": [
       {
         "product_id": "Egg",
