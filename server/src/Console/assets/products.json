@@ -1,47 +1,137 @@
 [
-  {"name": "Egg"},
-  {"name": "Butter"},
-  {"name": "Oil"},
-  {"name": "Lemon"},
-  {"name": "Cucumber"},
-  {"name": "Zukini"},
-  {"name": "Red Pepper"},
-  {"name": "Yellow pepper"},
-  {"name": "Green pepper"},
-  {"name": "Jalapenio"},
-  {"name": "Lettuce"},
-  {"name": "Mirin"},
-  {"name": "Rice"},
-  {"name": "Pholio sheet"},
-  {"name": "Pizza dough"},
-  {"name": "Black pepper"},
-  {"name": "Pene"},
-  {"name": "Spagetti"},
-  {"name": "Slamon"},
-  {"name": "Tuna"},
-  {"name": "Egg plant"},
-  {"name": "Strawberry"},
-  {"name": "Banana"},
-  {"name": "Watermelon"},
-  {"name": "Melon"},
-  {"name": "Blue berries"},
-  {"name": "Berries"},
-  {"name": "Peach"},
-  {"name": "Mango"},
-  {"name": "Cacao"},
-  {"name": "Nutella"},
-  {"name": "Apple"},
-  {"name": "Red onion"},
-  {"name": "White onion"},
-  {"name": "Ground beef"},
-  {"name": "Sweet potato"},
-  {"name": "Potato"},
-  {"name": "Flower"},
-  {"name": "Heavy cream"},
-  {"name": "Cream"},
-  {"name": "Mushroom"},
-  {"name": "Corn"},
-  {"name": "Chili"},
-  {"name": "Suger"},
-  {"name": "Salt"}
+  {
+    "name": "Egg", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Butter", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Oil", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Lemon", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Cucumber", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "_id": "051", "name": "Zukini", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Red Pepper", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Yellow pepper", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Green pepper", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Jalapenio", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Lettuce", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Mirin", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Rice", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Pholio sheet", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Pizza dough", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Black pepper", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Pene", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Spagetti", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Slamon", "diets": ["carnivore"]
+  },
+  {
+    "name": "Tuna", "diets": ["carnivore"]
+  },
+  {
+    "name": "Egg plant", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Strawberry", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Banana", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Watermelon", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Melon", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Blue berries", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Berries", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Peach", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Mango", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Cacao", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Nutella", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Apple", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Red onion", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "White onion", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Ground beef", "diets": ["carnivore"]
+  },
+  {
+    "name": "Sweet potato", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Potato", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Flower", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Heavy cream", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Cream", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Mushroom", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Corn", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Chili", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Suger", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Salt", "diets": ["vegan", "vegetarian", "carnivore"]
+  }
 ]
