@@ -31,6 +31,6 @@ script:
 
   # Testing the front
   - cd front
-  - npm run test-coverage
   - npm run lint
+  - npm run unit-test
   - cd -

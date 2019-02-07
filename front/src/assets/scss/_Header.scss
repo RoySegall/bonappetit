@@ -1,0 +1,14 @@
+header {
+  border-color: fade-out($gray-darker, .95);
+  background: $theme-secondary;
+  background: -webkit-linear-gradient(to left, $theme-secondary, $theme-tertiary);
+  background: linear-gradient(to left, $theme-secondary, $theme-tertiary);
+  color: $theme-primary;
+  height: 10vh;
+  padding-top: 3vh;
+  font-size: 3em;
+
+  &.navbar {
+    justify-content: center;
+  }
+}

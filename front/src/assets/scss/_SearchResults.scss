@@ -1,0 +1,41 @@
+.search-results-wrapper {
+  padding-top: 1.5em;
+
+  hr {
+    padding-bottom: 1em;
+  }
+
+  .results {
+
+    .result {
+
+      .intro-image {
+        border: solid 1px $theme-primary;
+      }
+
+      .recipe-info {
+
+        .title {
+          font-size: 2em;
+          font-weight: bold;
+
+          a {
+            color: black;
+          }
+        }
+
+        .metadata {
+
+          b {
+            margin-right: .5em;
+            color: $theme-secondary;
+          }
+        }
+      }
+
+      .recipe {
+        padding-top: 1.25em;
+      }
+    }
+  }
+}

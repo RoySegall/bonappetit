@@ -1,36 +1,78 @@
 {
-  "name": "",
-  "version": "1.0.0",
-  "description": "",
-  "main": "",
-  "author": "",
-  "license": "",
-  "dependencies": {
-    "babel-polyfill": "6.26.0",
-    "babel-preset-kyt-react": "0.3.0",
-    "html-webpack-plugin": "2.22.0",
-    "react": "15.3.0",
-    "react-dom": "15.3.0",
-    "react-router": "2.6.1",
-    "kyt": "0.9.0"
+  "name": "react-webpack-typescript-starter",
+  "version": "0.1.0",
+  "description": "Starter kit for React, Webpack (with Hot Module Replacement), Typescript and Babel.",
+  "keywords": [
+    "react",
+    "webpack",
+    "typescript",
+    "babel",
+    "sass",
+    "hmr",
+    "starter",
+    "boilerplate"
+  ],
+  "author": "Viktor Persson",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vikpe/react-webpack-typescript-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vikpe/react-webpack-typescript-starter/issues"
+  },
+  "homepage": "https://github.com/vikpe/react-webpack-typescript-starter",
+  "scripts": {
+    "build": "yarn run clean-dist && webpack -p --config=configs/webpack/prod.js",
+    "clean-dist": "rm -f -r -d dist",
+    "start": "yarn run start-dev",
+    "start-dev": "webpack-dev-server --config=configs/webpack/dev.js",
+    "start-prod": "yarn run build && node express.js",
+    "test": "jest --watch --coverage --config=configs/jest.json",
+    "lint": "tslint -c tslint.json 'src/**/*.tsx'",
+    "lint-fix": "tslint -c tslint.json 'src/**/*.tsx' --fix",
+    "unit-test": "npx jest --env=jsdom"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.3.0",
-    "enzyme": "2.4.1",
-    "react-addons-test-utils": "15.3.0",
-    "react-hot-loader": "3.0.0-beta.6"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "@types/jest": "^23.3.14",
+    "@types/node": "^10.12.18",
+    "@types/react": "^16.7.18",
+    "@types/react-dom": "^16.0.11",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1",
+    "express": "^4.16.4",
+    "file-loader": "^3.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^4.6.0",
+    "jest": "^23.6.0",
+    "node-sass": "^4.11.0",
+    "react": "^16.7.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.7.0",
+    "react-hot-loader": "^4.6.3",
+    "react-test-renderer": "^16.8.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.12.0",
+    "typescript": "^3.3.1",
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-middleware": "^3.5.0",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.2.1"
   },
-  "scripts": {
-    "dev": "kyt dev",
-    "build": "kyt build",
-    "start": "node build/server/main.js",
-    "proto": "kyt proto",
-    "test": "kyt test",
-    "test-watch": "kyt test -- --watch",
-    "test-coverage": "kyt test -- --coverage",
-    "lint": "npm run lint-script && npm run lint-style",
-    "lint-script": "kyt lint-script",
-    "lint-style": "kyt lint-style",
-    "kyt:help": "kyt --help"
+  "dependencies": {
+    "@reach/router": "^1.2.1",
+    "@types/reach__router": "^1.2.3",
+    "bootstrap": "^4.2.1"
   }
 }

@@ -1,0 +1,165 @@
+// Styling for the download section
+.HomeComponent {
+
+  .info {
+    text-align: center;
+    margin: 0 auto;
+    background: #fdcc52;
+    background: linear-gradient(#fdcc52, #fdc539);
+    padding: 3em 0;
+
+    h2 {
+      font-size: 50px;
+    }
+  }
+
+  form {
+
+    h3 {
+      font-size: 2em;
+    }
+
+    margin: 2em auto;
+
+    hr {
+      width: 75%;
+    }
+
+    .diets-wrapper {
+      padding-top: 1.5em;
+
+      label {
+        font-weight: bold;
+      }
+
+      .diets {
+
+        button {
+          font-size: 1.25em;
+          margin-left: .25em;
+          border-bottom: dashed 1px $brand-facebook;
+
+          &.selected {
+            border-radius: .25em;
+
+            &.carnivore {
+              background: #ff8282;
+              color: #5e1c1c;
+              border: solid 1px #8c1313;
+            }
+
+            &.vegan {
+              background: #abf9ab;
+              color: #095600;
+              border: solid 1px #70b973;
+            }
+
+            &.vegetarian {
+              background: #ffd882;
+              color: #5e4a1c;
+              border: solid 1px #8c6613;
+            }
+          }
+        }
+      }
+    }
+
+    .products-wrapper {
+      padding-top: 1.5em;
+
+      label {
+        font-weight: bold;
+      }
+
+      .products {
+        padding-top: .5em;
+
+        .fa-check {
+          padding-right: 0.25em;
+          color: #28a745;
+        }
+
+        .reset-button {
+
+          &:hover {
+            color: white;
+          }
+        }
+
+        button {
+          margin-right: .5em;
+          margin-bottom: .5em;
+          border-radius: 0.5em;
+          font-size: 1.15em;
+
+          &:hover {
+            color: #333;
+            border-color: $theme-primary;
+          }
+
+          &:focus {
+            border-color: inherit;
+          }
+
+          &.selected {
+            border-color: #28a745;
+          }
+        }
+      }
+    }
+
+    .searching-strategy {
+      padding-top: 1.5em;
+      display: block;
+
+      label {
+        font-weight: bold;
+        display: block;
+      }
+
+      .selections {
+
+        a {
+          margin-left: 1.5em;
+          color: black;
+          padding: 0 1em .5em 1em;
+          font-size: 1.25em;
+
+          .far {
+            padding-right: .25em;
+          }
+
+          &.selected {
+            border-bottom: solid 1px #ccc;
+
+            .far {
+              color: green;
+            }
+          }
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+
+      .explain {
+        padding-top: 1em;
+      }
+    }
+
+    .actions {
+      margin-top: 1em;
+
+      .alert.alert-danger {
+        margin: 1.5em auto;
+        width: 95vh;
+      }
+
+      button {
+        margin-right: .25em;
+        border-radius: .25em;
+      }
+    }
+  }
+}

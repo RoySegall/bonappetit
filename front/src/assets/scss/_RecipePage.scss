@@ -1,0 +1,54 @@
+.recipe-page {
+  padding-top: 1.5em;
+
+  h2 {
+    font-size: 3em;
+  }
+
+  h3 {
+    font-size: 1.25em;
+    color: #919191;
+  }
+
+  hr {
+    padding-bottom: 1.25em;
+  }
+
+  .metadata {
+    border: solid 1px $theme-secondary;
+    padding: .5em;
+    border-radius: .25em;
+
+    b {
+      margin-right: .5em;
+      color: $theme-secondary;
+    }
+
+    .image {
+      border-bottom: 1px dashed $theme-tertiary;
+      padding-bottom: .5em;
+      margin-bottom: .5em;
+
+      img {
+        border: solid 1px $theme-primary;
+      }
+    }
+  }
+
+  .steps {
+
+    .step {
+
+      .counter {
+        display: block;
+        color: #ccc;
+        font-size: 1.5em;
+        padding-bottom: .25em;
+      }
+
+      .text {
+        padding-left: 1.5em;
+      }
+    }
+  }
+}
