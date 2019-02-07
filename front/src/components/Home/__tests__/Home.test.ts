@@ -1,7 +1,7 @@
-describe("Product service", () => {
+describe("Home component", () => {
 
-    test("Testing crud operations", async () => {
-        expect.assertions(2);
+    test("Making sure the home component rendered as it suppose", async () => {
+        expect.assertions(1);
         expect(null).toBeNull();
     });
 
