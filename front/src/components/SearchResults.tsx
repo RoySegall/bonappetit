@@ -10,10 +10,10 @@ export default class SearchResults extends React.Component<RouteComponentProps, 
             results: [
                 {
                     _id: 50,
-                    image: 'https://img.buzzfeed.com/thumbnailer-prod-us-east-1/d97312e937034475934f5ca16c974dc1/eggsfinalFB.jpg?output-quality=60&resize=600:*',
-                    title: 'French Omelette',
-                    products: ['Egg', 'Salt', 'Oil'],
-                    matchFor: ['Vegetarian', 'Carnivore'],
+                    image: "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/d97312e937034475934f5ca16c974dc1/eggsfinalFB.jpg?output-quality=60&resize=600:*",
+                    title: "French Omelette",
+                    products: ["Egg", "Salt", "Oil"],
+                    matchFor: ["Vegetarian", "Carnivore"],
                     steps: [
                         {
                             "text": "Take a pan and hit it"
@@ -37,7 +37,7 @@ export default class SearchResults extends React.Component<RouteComponentProps, 
                             "text": "Repeat again on the previous step"
                         }
                     ],
-                    duration: '15m',
+                    duration: "15m",
                 }
             ]
         };
@@ -56,31 +56,31 @@ export default class SearchResults extends React.Component<RouteComponentProps, 
                                 return (
                                     <div className="row result" key={index}>
                                         <div className="col-2">
-                                            <img src={result['image']} className="img-fluid intro-image" alt="Recipe example"/>
+                                            <img src={result["image"]} className="img-fluid intro-image" alt="Recipe example"/>
                                         </div>
 
                                         <div className="col-9 recipe-info">
                                             <span className="title"><Link to={"/recipe/" + result._id}>{result.title}</Link></span>
 
                                             <section className="metadata">
-                                                <div className="products"><b>Products:</b>{result.products.join(', ')}</div>
-                                                <div className="diets"><b>Match for:</b>{result.matchFor.join(', ')}</div>
+                                                <div className="products"><b>Products:</b>{result.products.join(", ")}</div>
+                                                <div className="diets"><b>Match for:</b>{result.matchFor.join(", ")}</div>
                                                 <div className="steps"><b>Number of steps:</b>{result.steps.length}</div>
                                                 <div className="duration"><b>Duration:</b>{result.duration}</div>
                                             </section>
                                         </div>
                                         <p className="col-12 recipe">
                                             {result.steps.map((item, index) => {
-                                                return <span key={index}>{item.text}{index+1 === result.steps.length ? '' : ', '}</span>
+                                                return <span key={index}>{item.text}{index + 1 === result.steps.length ? "" : ", "}</span>;
                                             })}
                                         </p>
                                     </div>
-                                )
+                                );
                             })}
                         </div>
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }

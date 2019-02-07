@@ -7,6 +7,6 @@ export default class Header extends React.Component {
             <header className="navbar" id="mainNav">
                 <Link to="/">Bonapetit</Link>
             </header>
-        )
+        );
     }
 }

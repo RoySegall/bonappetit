@@ -17,9 +17,9 @@ before_script:
   - cd -
 
   # Setting up front server.
-#  - cd front
-#  - npm i
-#  - cd -
+  - cd front
+  - npm i
+  - cd -
 
 
 script:
@@ -30,7 +30,7 @@ script:
   - cd -
 
   # Testing the front
-#  - cd front
-#  - npm run test-coverage
-#  - npm run lint
-#  - cd -
+  - cd front
+  - npm run lint
+  - npm run unit-test
+  - cd -

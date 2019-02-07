@@ -10,25 +10,25 @@ export default class SearchForm extends React.Component<any, any> {
             selected: {},
             diets: [
                 {
-                    key: 'vegan',
-                    name: 'Vegan',
-                    icon: 'fas fa-seedling',
+                    key: "vegan",
+                    name: "Vegan",
+                    icon: "fas fa-seedling",
                 },
                 {
-                    key: 'vegetarian',
-                    name: 'Vegetarian',
-                    icon: 'fas fa-cheese',
+                    key: "vegetarian",
+                    name: "Vegetarian",
+                    icon: "fas fa-cheese",
                 },
                 {
-                    key: 'carnivore',
-                    name: 'Carnivore',
-                    icon: 'fas fa-drumstick-bite',
+                    key: "carnivore",
+                    name: "Carnivore",
+                    icon: "fas fa-drumstick-bite",
                 },
             ],
             cloned_products: props.products,
-            strategy: 'exact',
-            diet: '',
-            formError: ''
+            strategy: "exact",
+            diet: "",
+            formError: ""
         };
     }
 
@@ -52,7 +52,7 @@ export default class SearchForm extends React.Component<any, any> {
         }
 
         this.setState({selected});
-    };
+    }
 
     /**
      * Checking if a product marked as selected.
@@ -66,7 +66,7 @@ export default class SearchForm extends React.Component<any, any> {
         }
 
         return this.state.selected[id];
-    };
+    }
 
     /**
      * Handling a diet selection action.
@@ -97,8 +97,8 @@ export default class SearchForm extends React.Component<any, any> {
 
         // Setting the diet and the filtered products, if they filtered, and clear the selected products property.
         // We need to clear the selected because the user might selected products which not match the current diet.
-        this.setState({diet, cloned_products, selected: {}})
-    };
+        this.setState({diet, cloned_products, selected: {}});
+    }
 
     /**
      * Reset the form state.
@@ -111,11 +111,11 @@ export default class SearchForm extends React.Component<any, any> {
 
         this.setState({
             selected: {},
-            diet: '',
-            formError: '',
-            strategy: 'exact',
+            diet: "",
+            formError: "",
+            strategy: "exact",
         });
-    };
+    }
 
     /**
      * Submitting the form.
@@ -126,7 +126,7 @@ export default class SearchForm extends React.Component<any, any> {
     submitForm = (event) => {
         event.preventDefault();
 
-        this.setState({formError: ''});
+        this.setState({formError: ""});
 
         // Checking if the user selected any product. When we got a selected product with true that mean the user
         // selected at least one product and that's OK for us.
@@ -137,8 +137,8 @@ export default class SearchForm extends React.Component<any, any> {
             }
         }
 
-        this.setState({formError: 'Please select some products'});
-    };
+        this.setState({formError: "Please select some products"});
+    }
 
     /**
      * Switching between products combinations strategy.
@@ -152,7 +152,7 @@ export default class SearchForm extends React.Component<any, any> {
         event.preventDefault();
 
         this.setState({strategy});
-    };
+    }
 
     render() {
         return (
@@ -171,9 +171,9 @@ export default class SearchForm extends React.Component<any, any> {
                                 {this.state.diets.map((item, key) => {
                                     let className = `btn ${item.key}`;
 
-                                    if (this.state.diet !== '') {
+                                    if (this.state.diet !== "") {
                                         if (this.state.diet === item.key) {
-                                            className += ' selected';
+                                            className += " selected";
                                         }
                                     }
 
@@ -185,7 +185,7 @@ export default class SearchForm extends React.Component<any, any> {
                                         >
                                                 <i className={item.icon}></i> {item.name}
                                         </button>
-                                    )
+                                    );
                                 })}
                             </div>
                         </div>
@@ -202,13 +202,13 @@ export default class SearchForm extends React.Component<any, any> {
                                             key={key}
                                             id={product.id}
                                             onClick={(e) => this.handleProductSelection(e, product._id)}
-                                            className={(this.getProductSelectionState(product._id) ? 'selected' : '') + " btn btn-light"}
+                                            className={(this.getProductSelectionState(product._id) ? "selected" : "") + " btn btn-light"}
                                         >
                                             {this.getProductSelectionState(product._id) ? (
-                                                <i className="fas fa-check"></i>) : ''}
+                                                <i className="fas fa-check"></i>) : ""}
                                             {product.name}
                                         </button>
-                                    )
+                                    );
                                 })}
                             </div>
                         </div>
@@ -220,28 +220,28 @@ export default class SearchForm extends React.Component<any, any> {
                             <div className="selections">
                                 <a
                                     href="#"
-                                    onClick={(e) => this.selectStrategy(e, 'exact')}
-                                    className={this.state.strategy === 'exact' ? "selected" : ''}
+                                    onClick={(e) => this.selectStrategy(e, "exact")}
+                                    className={this.state.strategy === "exact" ? "selected" : ""}
                                 >
-                                    <i className={this.state.strategy === 'exact' ? "far fa-check-square" : 'far fa-square'}></i>
+                                    <i className={this.state.strategy === "exact" ? "far fa-check-square" : "far fa-square"}></i>
                                     Only selected products
                                 </a>
 
                                 <a
                                     href="#"
-                                    onClick={(e) => this.selectStrategy(e, 'contains')}
-                                    className={this.state.strategy === 'contains' ? "selected" : ''}
+                                    onClick={(e) => this.selectStrategy(e, "contains")}
+                                    className={this.state.strategy === "contains" ? "selected" : ""}
                                 >
-                                    <i className={this.state.strategy === 'contains' ? "far fa-check-square" : 'far fa-square'}></i>
+                                    <i className={this.state.strategy === "contains" ? "far fa-check-square" : "far fa-square"}></i>
                                     Selected products and more
                                 </a>
                             </div>
 
                             <p className="explain">
                                 This will assure that only recipes which contains the selected items,<b>
-                            { this.state.strategy === 'exact' ?
-                                ' and not more or less' :
-                                ' and some other products as well'
+                            { this.state.strategy === "exact" ?
+                                " and not more or less" :
+                                " and some other products as well"
                             }
                             </b>, will be picked
                             </p>
@@ -250,7 +250,7 @@ export default class SearchForm extends React.Component<any, any> {
                         <div className="actions">
 
                             {
-                                this.state.formError !== '' ? <div className="alert alert-danger">{this.state.formError}</div> : ''
+                                this.state.formError !== "" ? <div className="alert alert-danger">{this.state.formError}</div> : ""
                             }
 
                             <button
@@ -272,6 +272,6 @@ export default class SearchForm extends React.Component<any, any> {
                     </div>
                 </form>
             </div>
-        )
+        );
     }
 }

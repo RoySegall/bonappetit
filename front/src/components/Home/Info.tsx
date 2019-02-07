@@ -1,5 +1,5 @@
 import * as React from "react";
-import {RouteComponentProps} from '@reach/router';
+import {RouteComponentProps} from "@reach/router";
 
 export default class Info extends React.Component<any, any> {
 
@@ -16,6 +16,6 @@ export default class Info extends React.Component<any, any> {
                     </div>
                 </div>
             </section>
-        )
+        );
     }
 }
