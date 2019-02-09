@@ -1,5 +1,6 @@
 import * as React from "react";
 import {navigate} from "@reach/router";
+import AppContext from "../../Store/AppContext";
 
 export default class SearchForm extends React.Component<any, any> {
 
@@ -157,6 +158,19 @@ export default class SearchForm extends React.Component<any, any> {
     render() {
         return (
             <div>
+                <div>
+                    <AppContext.Consumer>
+                        {(context: any) => (
+                            <div>
+                                <div>
+                                    <b>foo value:</b> {context.diet}
+                                </div>
+                                <a onClick={(e) => context.setDiet(e, 'foo')}>setFoo</a>
+                            </div>
+                        )}
+                    </AppContext.Consumer>
+                </div>
+
                 <form className="row">
                     <div className="col-md-8 mx-auto text-center">
                         <h3>Search recipes</h3>
