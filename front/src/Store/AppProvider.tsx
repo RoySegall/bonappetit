@@ -8,11 +8,19 @@ export default class AppProvider extends React.Component {
 
         this.state = {
             diet: null,
-            setDiet: (e, diet) => {
-                e.preventDefault();
-
+            setDiet: (diet) => {
                 this.setState({diet});
-            }
+            },
+
+            products: [],
+            setProducts: (products: []) => {
+                this.setState({products});
+            },
+
+            strategy: 'exact',
+            setStrategy: (strategy: string) => {
+                this.setState({strategy});
+            },
         };
     }
 
