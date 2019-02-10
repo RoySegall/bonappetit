@@ -134,7 +134,7 @@ export default class SearchForm extends React.Component<any, any> {
 
         if (context !== {}) {
             context.setStrategy("exact");
-            context.setProducts([]);
+            context.setProducts({});
             context.setDiet("");
         }
     };

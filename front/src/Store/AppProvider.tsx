@@ -12,8 +12,8 @@ export default class AppProvider extends React.Component {
                 this.setState({diet});
             },
 
-            products: [],
-            setProducts: (products: []) => {
+            products: {},
+            setProducts: (products: {}) => {
                 this.setState({products});
             },
 

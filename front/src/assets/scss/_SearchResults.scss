@@ -5,6 +5,20 @@
     padding-bottom: 1em;
   }
 
+  .alert-danger {
+
+    a {
+      color: black;
+      padding-left: 0.25em;
+
+      &:hover {
+        font-weight: bold;
+        text-decoration: none;
+      }
+    }
+
+  }
+
   .results {
 
     .result {
