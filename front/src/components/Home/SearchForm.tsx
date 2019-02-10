@@ -59,7 +59,7 @@ export default class SearchForm extends React.Component<any, any> {
         }
 
         this.setState({selected});
-    };
+    }
 
     /**
      * Checking if a product marked as selected.
@@ -112,7 +112,7 @@ export default class SearchForm extends React.Component<any, any> {
         // Setting the diet and the filtered products, if they filtered, and clear the selected products property.
         // We need to clear the selected because the user might selected products which not match the current diet.
         this.setState({diet, cloned_products, selected: {}});
-    };
+    }
 
     /**
      * Reset the form state.
@@ -137,7 +137,7 @@ export default class SearchForm extends React.Component<any, any> {
             context.setProducts({});
             context.setDiet("");
         }
-    };
+    }
 
     /**
      * Submitting the form.
@@ -179,7 +179,7 @@ export default class SearchForm extends React.Component<any, any> {
         }
 
         this.setState({strategy});
-    };
+    }
 
     render() {
         return (
@@ -298,7 +298,7 @@ export default class SearchForm extends React.Component<any, any> {
                                     <button
                                         type="submit"
                                         className={"btn btn-danger reset-button"}
-                                        onClick={(e) => {this.resetForm(e, context)}}
+                                        onClick={(e) => {this.resetForm(e, context); }}
                                     >
                                         <i className="fas fa-power-off"></i> Reset
                                     </button>

@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Link, RouteComponentProps} from "@reach/router";
-import AppContext from "../Store/AppContext"
+import AppContext from "../Store/AppContext";
 
 export default class SearchResults extends React.Component<RouteComponentProps, any, any> {
 
@@ -57,8 +57,8 @@ export default class SearchResults extends React.Component<RouteComponentProps, 
                     <Link to="/">Select some products and everything will be OK.</Link>
                 </div>
             </div>
-        )
-    };
+        );
+    }
 
     getResultsFromServer = (products) => {
         if (Object.keys(products).length === 0) {
@@ -108,8 +108,8 @@ export default class SearchResults extends React.Component<RouteComponentProps, 
                 </div>
             </div>
 
-        )
-    };
+        );
+    }
 
     render() {
         return (

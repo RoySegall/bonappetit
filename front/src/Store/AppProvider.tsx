@@ -17,7 +17,7 @@ export default class AppProvider extends React.Component {
                 this.setState({products});
             },
 
-            strategy: 'exact',
+            strategy: "exact",
             setStrategy: (strategy: string) => {
                 this.setState({strategy});
             },
@@ -27,7 +27,6 @@ export default class AppProvider extends React.Component {
     render() {
         return <AppContext.Provider value={this.state}>
             {this.props.children}
-        </AppContext.Provider>
-
+        </AppContext.Provider>;
     }
 }
