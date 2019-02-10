@@ -1,5 +1,6 @@
 import * as React from "react";
 import {navigate} from "@reach/router";
+import AppContext from "../../Store/AppContext";
 
 export default class SearchForm extends React.Component<any, any> {
 
@@ -39,8 +40,10 @@ export default class SearchForm extends React.Component<any, any> {
      *  The event object.
      * @param id
      *  The ID of the object.
+     * @param context
+     *  The context service.
      */
-    handleProductSelection = (event, id) => {
+    handleProductSelection = (event, id, context: any = {}) => {
         event.preventDefault();
 
         let selected = this.state.selected;
@@ -49,6 +52,10 @@ export default class SearchForm extends React.Component<any, any> {
             selected[id] = !selected[id];
         } else {
             selected[id] = true;
+        }
+
+        if (context !== {}) {
+            context.setProducts(selected);
         }
 
         this.setState({selected});
@@ -75,8 +82,10 @@ export default class SearchForm extends React.Component<any, any> {
      *  The event object.
      * @param diet
      *  The diet type.
+     * @param context
+     *  The react context object.
      */
-    handleDietSelection = (event, diet) => {
+    handleDietSelection = (event, diet, context: any = {}) => {
         event.preventDefault();
 
         if (this.state.diet === diet) {
@@ -95,6 +104,11 @@ export default class SearchForm extends React.Component<any, any> {
             });
         }
 
+        // Setting the diet type in the context.
+        if (context !== {}) {
+            context.setDiet(diet);
+        }
+
         // Setting the diet and the filtered products, if they filtered, and clear the selected products property.
         // We need to clear the selected because the user might selected products which not match the current diet.
         this.setState({diet, cloned_products, selected: {}});
@@ -105,8 +119,10 @@ export default class SearchForm extends React.Component<any, any> {
      *
      * @param event
      *  The event object.
+     * @param context
+     *  The context object.
      */
-    resetForm = (event) => {
+    resetForm = (event, context: any = {}) => {
         event.preventDefault();
 
         this.setState({
@@ -115,6 +131,12 @@ export default class SearchForm extends React.Component<any, any> {
             formError: "",
             strategy: "exact",
         });
+
+        if (context !== {}) {
+            context.setStrategy("exact");
+            context.setProducts({});
+            context.setDiet("");
+        }
     }
 
     /**
@@ -147,9 +169,14 @@ export default class SearchForm extends React.Component<any, any> {
      *  The event object.
      * @param strategy
      *  The strategy - exact or contains.
+     * @param context
      */
-    selectStrategy = (event, strategy) => {
+    selectStrategy = (event, strategy, context: any = {}) => {
         event.preventDefault();
+
+        if (context !== {}) {
+            context.setStrategy(strategy);
+        }
 
         this.setState({strategy});
     }
@@ -157,6 +184,7 @@ export default class SearchForm extends React.Component<any, any> {
     render() {
         return (
             <div>
+
                 <form className="row">
                     <div className="col-md-8 mx-auto text-center">
                         <h3>Search recipes</h3>
@@ -178,13 +206,16 @@ export default class SearchForm extends React.Component<any, any> {
                                     }
 
                                     return (
-                                        <button
-                                            key={key}
-                                            onClick={(e) => this.handleDietSelection(e, item.key)}
-                                            className={className}
-                                        >
-                                                <i className={item.icon}></i> {item.name}
-                                        </button>
+                                        <AppContext.Consumer key={key}>
+                                            {(context: any) => (
+                                                <button
+                                                    onClick={(e) => this.handleDietSelection(e, item.key, context)}
+                                                    className={className}
+                                                >
+                                                    <i className={item.icon}></i> {item.name}
+                                                </button>
+                                            )}
+                                        </AppContext.Consumer>
                                     );
                                 })}
                             </div>
@@ -198,16 +229,20 @@ export default class SearchForm extends React.Component<any, any> {
 
                                 {this.state.cloned_products.map((product, key) => {
                                     return (
-                                        <button
-                                            key={key}
-                                            id={product.id}
-                                            onClick={(e) => this.handleProductSelection(e, product._id)}
-                                            className={(this.getProductSelectionState(product._id) ? "selected" : "") + " btn btn-light"}
-                                        >
-                                            {this.getProductSelectionState(product._id) ? (
-                                                <i className="fas fa-check"></i>) : ""}
-                                            {product.name}
-                                        </button>
+                                        <AppContext.Consumer key={key}>
+                                            {(context: any) => (
+                                                <button
+                                                    id={product.id}
+                                                    onClick={(e) => this.handleProductSelection(e, product._id, context)}
+                                                    className={(this.getProductSelectionState(product._id) ? "selected" : "") + " btn btn-light"}
+                                                >
+                                                    {this.getProductSelectionState(product._id) ? (
+                                                        <i className="fas fa-check"></i>) : ""}
+                                                    {product.name}
+                                                </button>
+                                            )}
+                                        </AppContext.Consumer>
+
                                     );
                                 })}
                             </div>
@@ -217,58 +252,70 @@ export default class SearchForm extends React.Component<any, any> {
 
                             <label htmlFor="searching-strategy">How would you like to combine the products?</label>
 
-                            <div className="selections">
-                                <a
-                                    href="#"
-                                    onClick={(e) => this.selectStrategy(e, "exact")}
-                                    className={this.state.strategy === "exact" ? "selected" : ""}
-                                >
-                                    <i className={this.state.strategy === "exact" ? "far fa-check-square" : "far fa-square"}></i>
-                                    Only selected products
-                                </a>
+                            <AppContext.Consumer>
+                                {(context: any) => (
+                                    <div className="selections">
+                                        <a
+                                            href="#"
+                                            onClick={(e) => this.selectStrategy(e, "exact", context)}
+                                            className={this.state.strategy === "exact" ? "selected" : ""}
+                                        >
+                                            <i className={this.state.strategy === "exact" ? "far fa-check-square" : "far fa-square"}></i>
+                                            Only selected products
+                                        </a>
 
-                                <a
-                                    href="#"
-                                    onClick={(e) => this.selectStrategy(e, "contains")}
-                                    className={this.state.strategy === "contains" ? "selected" : ""}
-                                >
-                                    <i className={this.state.strategy === "contains" ? "far fa-check-square" : "far fa-square"}></i>
-                                    Selected products and more
-                                </a>
-                            </div>
+                                        <a
+                                            href="#"
+                                            onClick={(e) => this.selectStrategy(e, "contains", context)}
+                                            className={this.state.strategy === "contains" ? "selected" : ""}
+                                        >
+                                            <i className={this.state.strategy === "contains" ? "far fa-check-square" : "far fa-square"}></i>
+                                            Selected products and more
+                                        </a>
+                                    </div>
+                                )}
+                            </AppContext.Consumer>
+
 
                             <p className="explain">
                                 This will assure that only recipes which contains the selected items,<b>
-                            { this.state.strategy === "exact" ?
-                                " and not more or less" :
-                                " and some other products as well"
-                            }
+                                {this.state.strategy === "exact" ?
+                                    " and not more or less" :
+                                    " and some other products as well"
+                                }
                             </b>, will be picked
                             </p>
                         </div>
 
-                        <div className="actions">
+                        <AppContext.Consumer>
+                            {(context: any) => (
+                                <div className="actions">
+                                    {
+                                        this.state.formError !== "" ?
+                                            <div className="alert alert-danger">{this.state.formError}</div> : ""
+                                    }
 
-                            {
-                                this.state.formError !== "" ? <div className="alert alert-danger">{this.state.formError}</div> : ""
-                            }
+                                    <button
+                                        type="submit"
+                                        className={"btn btn-danger reset-button"}
+                                        onClick={(e) => {this.resetForm(e, context); }}
+                                    >
+                                        <i className="fas fa-power-off"></i> Reset
+                                    </button>
 
-                            <button
-                                type="submit"
-                                className={"btn btn-danger reset-button"}
-                                onClick={this.resetForm}
-                            >
-                                <i className="fas fa-power-off"></i> Reset
-                            </button>
+                                    <button
+                                        type="submit"
+                                        className="btn btn-primary"
+                                        onClick={this.submitForm}
+                                    >
+                                        <i className="fas fa-search"></i> Submit
+                                    </button>
+                                </div>
 
-                            <button
-                                type="submit"
-                                className="btn btn-primary"
-                                onClick={this.submitForm}
-                            >
-                                <i className="fas fa-search"></i> Submit
-                            </button>
-                        </div>
+                            )}
+                        </AppContext.Consumer>
+
+
                     </div>
                 </form>
             </div>
