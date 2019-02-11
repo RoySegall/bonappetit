@@ -6,6 +6,48 @@
     "name": "Butter", "diets": ["vegetarian", "carnivore"]
   },
   {
+    "name": "Milk", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Goat cheese", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Creme fraiche", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Blue cheese", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Ricotta", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Condensed milk", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Cottage cheese", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Parmesan", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Cheddar", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Cream", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Heavy cream", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Mozzarella", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Yogurt", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Feta", "diets": ["vegetarian", "carnivore"]
+  },
+  {
     "name": "Oil", "diets": ["vegan", "vegetarian", "carnivore"]
   },
   {
@@ -15,7 +57,7 @@
     "name": "Cucumber", "diets": ["vegan", "vegetarian", "carnivore"]
   },
   {
-    "_id": "051", "name": "Zukini", "diets": ["vegan", "vegetarian", "carnivore"]
+    "name": "Zucchini", "diets": ["vegan", "vegetarian", "carnivore"]
   },
   {
     "name": "Red Pepper", "diets": ["vegan", "vegetarian", "carnivore"]
@@ -57,10 +99,22 @@
     "name": "Slamon", "diets": ["carnivore"]
   },
   {
-    "name": "Tuna", "diets": ["carnivore"]
+    "name": "Egg plant", "diets": ["vegan", "vegetarian", "carnivore"]
   },
   {
-    "name": "Egg plant", "diets": ["vegan", "vegetarian", "carnivore"]
+    "name": "Orange", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Grape", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Coconut", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Pineapple", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Blueberry", "diets": ["vegan", "vegetarian", "carnivore"]
   },
   {
     "name": "Strawberry", "diets": ["vegan", "vegetarian", "carnivore"]
@@ -81,10 +135,31 @@
     "name": "Berries", "diets": ["vegan", "vegetarian", "carnivore"]
   },
   {
+    "name": "Chili", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Sugar", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Brown sugar", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Honey", "diets": ["vegetarian", "carnivore"]
+  },
+  {
+    "name": "Maple syrup", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Salt", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
     "name": "Peach", "diets": ["vegan", "vegetarian", "carnivore"]
   },
   {
     "name": "Mango", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Pear", "diets": ["vegan", "vegetarian", "carnivore"]
   },
   {
     "name": "Cacao", "diets": ["vegan", "vegetarian", "carnivore"]
@@ -96,6 +171,24 @@
     "name": "Apple", "diets": ["vegan", "vegetarian", "carnivore"]
   },
   {
+    "name": "Tomato", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Olive", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Avocado", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Parsley", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Carrot", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Garlic", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
     "name": "Red onion", "diets": ["vegan", "vegetarian", "carnivore"]
   },
   {
@@ -103,6 +196,51 @@
   },
   {
     "name": "Ground beef", "diets": ["carnivore"]
+  },
+  {
+    "name": "Pork belly", "diets": ["carnivore"]
+  },
+  {
+    "name": "Duck", "diets": ["carnivore"]
+  },
+  {
+    "name": "Beef ribs", "diets": ["carnivore"]
+  },
+  {
+    "name": "Pepperoni", "diets": ["carnivore"]
+  },
+  {
+    "name": "Pork", "diets": ["carnivore"]
+  },
+  {
+    "name": "Sausage", "diets": ["carnivore"]
+  },
+  {
+    "name": "Bacon", "diets": ["carnivore"]
+  },
+  {
+    "name": "Chicken breast", "diets": ["carnivore"]
+  },
+  {
+    "name": "Canned tuna", "diets": ["carnivore"]
+  },
+  {
+    "name": "Salmon", "diets": ["carnivore"]
+  },
+  {
+    "name": "Cod", "diets": ["carnivore"]
+  },
+  {
+    "name": "Anchovy", "diets": ["carnivore"]
+  },
+  {
+    "name": "Smoked salmon", "diets": ["carnivore"]
+  },
+  {
+    "name": "Sardines", "diets": ["carnivore"]
+  },
+  {
+    "name": "Sea bass", "diets": ["carnivore"]
   },
   {
     "name": "Sweet potato", "diets": ["vegan", "vegetarian", "carnivore"]
@@ -123,15 +261,9 @@
     "name": "Mushroom", "diets": ["vegan", "vegetarian", "carnivore"]
   },
   {
+    "name": "Portobello mushroom", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
     "name": "Corn", "diets": ["vegan", "vegetarian", "carnivore"]
-  },
-  {
-    "name": "Chili", "diets": ["vegan", "vegetarian", "carnivore"]
-  },
-  {
-    "name": "Suger", "diets": ["vegan", "vegetarian", "carnivore"]
-  },
-  {
-    "name": "Salt", "diets": ["vegan", "vegetarian", "carnivore"]
   }
 ]
