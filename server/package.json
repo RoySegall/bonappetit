@@ -10,7 +10,8 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "lint-fix": "tslint -c tslint.json 'src/**/*.ts' --fix",
     "unit-test": "npx jest",
-    "cli": "ts-node cli.ts"
+    "cli": "ts-node src/cli.ts",
+    "cli-help": "ts-node src/cli.ts --help"
   },
   "author": "",
   "license": "ISC",

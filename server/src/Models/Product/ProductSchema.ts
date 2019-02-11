@@ -9,7 +9,7 @@ const ProductSchema = new mongoose.Schema({
         required: true,
         type: String,
     },
-    diet: {
+    diets: {
         type: [String],
         required: true,
     },
