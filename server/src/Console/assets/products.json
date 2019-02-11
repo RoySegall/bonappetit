@@ -1,6 +1,6 @@
 [
   {
-    "name": "Egg"
+    "name": "Egg", "diets": ["vegetarian", "carnivore"]
   },
   {
     "name": "Butter", "diets": ["vegetarian", "carnivore"]

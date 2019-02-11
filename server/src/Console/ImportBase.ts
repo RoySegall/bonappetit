@@ -16,7 +16,7 @@ export default abstract class ImportBase {
         return this.description;
     }
 
-    public abstract importData();
+    public abstract async importData();
 
     public clearCollection() {
         console.log(this.chalk().yellow(`Cleaning ${this.collectionName}`));

@@ -1,4 +1,3 @@
-import * as mongoose from "mongoose";
 import ProductsImporter from "./ProductsImporter";
 import RecipesImporter from "./RecipesImporter";
 

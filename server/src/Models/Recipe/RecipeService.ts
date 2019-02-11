@@ -9,8 +9,7 @@ export default class RecipeService extends AbstractEntityService implements Enti
 
     constructor() {
         super();
-
-        this.recipeSchema  = mongoose.model("Recipe", RecipeSchema);
+        this.recipeSchema = mongoose.model("Recipe", RecipeSchema);
     }
 
     public getSchema() {

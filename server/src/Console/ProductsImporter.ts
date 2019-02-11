@@ -6,22 +6,28 @@ export default class ProductsImporter extends ImportBase {
 
     protected name = "Import products";
     protected description = "Import products";
+    protected productService;
 
     constructor() {
         super();
 
-        this.collectionName = new ProductService().getSchema().collection.name;
+        this.productService = new ProductService();
+        this.collectionName = this.productService.getSchema().collection.name;
     }
 
-    public importData() {
+    public async importData() {
         console.log(this.chalk().yellow("Starting to import products"));
 
-        // We don't need to process the items so we just insert them to the collection.
-        mongoose
-            .connection
-            .db
-            .collection(this.collectionName)
-            .insertMany(JSON.parse(this.getAsset("products.json")));
+        const items = JSON.parse(this.getAsset("products.json"));
+
+        await Promise.all(items.map(async (item) => {
+            try {
+                await this.productService.create(item);
+                console.log(`Migrating ${item.name}`)
+            } catch (e) {
+                console.error(e);
+            }
+        }));
 
         console.log(this.chalk().yellow("Done! all products have been imported"));
     }
