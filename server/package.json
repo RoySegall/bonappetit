@@ -9,7 +9,8 @@
     "start": "node ./dist/server.js",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "lint-fix": "tslint -c tslint.json 'src/**/*.ts' --fix",
-    "unit-test": "npx jest"
+    "unit-test": "npx jest",
+    "cli": "ts-node cli.ts"
   },
   "author": "",
   "license": "ISC",

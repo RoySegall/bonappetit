@@ -9,9 +9,9 @@ const ProductSchema = new mongoose.Schema({
         required: true,
         type: String,
     },
-    single_peace: {
-        default: false,
-        type: Boolean,
+    diet: {
+        type: [String],
+        required: true,
     },
 });
 
