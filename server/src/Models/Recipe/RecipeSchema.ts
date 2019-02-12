@@ -1,4 +1,5 @@
 import * as mongoose from "mongoose";
+import * as moment from "moment";
 
 const RecipeSchema = new mongoose.Schema({
     title: {
@@ -8,6 +9,19 @@ const RecipeSchema = new mongoose.Schema({
     description: {
         type: String,
         require: true,
+    },
+    created: {
+        type: Number,
+    },
+    matchFor: {
+        type: [String],
+        required: true,
+        validate: {
+            validator: function (v) {
+                return v.length > 0;
+            },
+            message: props => `${props.value} is empty`
+        },
     },
     ingredients: [{
         product_id: {
@@ -24,7 +38,6 @@ const RecipeSchema = new mongoose.Schema({
             required: true,
         },
     }],
-    video: String,
     steps: [{
         text: {
             type: String,
@@ -32,6 +45,19 @@ const RecipeSchema = new mongoose.Schema({
         },
         time_to_next_step: Number,
     }],
+    notes: [{
+        text: {
+            type: String,
+        },
+    }],
+});
+
+RecipeSchema.pre('validate', function(this: any, next) {
+    const recipe = this;
+    // Yes, validate function need to handle only validation but if we won't change the value of the date to timestamp
+    // mongoose will kick us out.
+    recipe.created = moment(recipe.created).unix();
+    next();
 });
 
 export default RecipeSchema;

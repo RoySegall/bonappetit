@@ -15,8 +15,10 @@ commander
     .description('Importing stuff. Pass "all" for all the items or the machine name.')
     .action(async (importer) => {
         await mongoose.connect(Settings.get().MONGO_URL);
-        await (new ImporterCommand()).importItems(importer);
-        mongoose.disconnect();
+        (new ImporterCommand()).importItems(importer).then(() => {
+            setTimeout(() => {mongoose.disconnect()}, 2000);
+            // mongoose.disconnect();
+        });
     });
 
 commander.parse(process.argv);

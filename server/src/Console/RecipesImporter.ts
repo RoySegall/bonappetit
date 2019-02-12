@@ -21,7 +21,7 @@ export default class RecipesImporter extends ImportBase {
 
     public async importData() {
         // Pull all the products at once from the DB.
-        const allProducts: any = (await this.ProductService.getAll());
+        const allProducts: any = await (this.ProductService.getAll());
 
         const map = {};
 
@@ -34,18 +34,14 @@ export default class RecipesImporter extends ImportBase {
 
         const recipes = JSON.parse(this.getAsset("recipes.json"));
 
-        await Promise.all(recipes.map(async (recipe) => {
+        recipes.map((recipe) => {
             for (const ingredient of recipe.ingredients) {
                 // Replace the name of the product with the ID.
                 ingredient.product_id = map[ingredient.product_id];
             }
 
-            try {
-                await this.RecipeService.create(recipe);
-            } catch (e) {
-                console.error(e);
-            }
-        }));
+            this.RecipeService.create(recipe);
+        });
 
         console.log(this.chalk().yellow("Done! all recipes have been imported"));
     }
