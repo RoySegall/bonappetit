@@ -13,10 +13,10 @@ const ProductSchema = new mongoose.Schema({
         type: [String],
         required: true,
         validate: {
-            validator: function(v) {
+            validator(v) {
                 return v.length > 0;
             },
-            message: props => `${props.value} is empty`
+            message: (props) => `${props.value} is empty`,
         },
     },
 });

@@ -27,7 +27,7 @@ export default class ProductController extends BaseController {
                 BaseController.generalError(res);
                 console.error(e);
             }
-        })
+        });
 
         this.router.get("/product/:id", async (req: express.Request, res: express.Response) => {
             const loadedProduct = await this.productService.load(req.params.id);

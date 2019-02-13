@@ -1,5 +1,5 @@
-import * as mongoose from "mongoose";
 import * as moment from "moment";
+import * as mongoose from "mongoose";
 
 const RecipeSchema = new mongoose.Schema({
     title: {
@@ -17,10 +17,10 @@ const RecipeSchema = new mongoose.Schema({
         type: [String],
         required: true,
         validate: {
-            validator: function (v) {
+            validator(v) {
                 return v.length > 0;
             },
-            message: props => `${props.value} is empty`
+            message: (props) => `${props.value} is empty`,
         },
     },
     ingredients: [{
@@ -52,7 +52,7 @@ const RecipeSchema = new mongoose.Schema({
     }],
 });
 
-RecipeSchema.pre('validate', function(this: any, next) {
+RecipeSchema.pre("validate", function(this: any, next) {
     const recipe = this;
     // Yes, validate function need to handle only validation but if we won't change the value of the date to timestamp
     // mongoose will kick us out.

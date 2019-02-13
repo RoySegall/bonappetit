@@ -15,7 +15,7 @@ commander
     .description('Importing stuff. Pass "all" for all the items or the machine name.')
     .action(async (importer) => {
         await mongoose.connect(Settings.get().MONGO_URL);
-       (new ImporterCommand()).importItems(importer);
+        (new ImporterCommand()).importItems(importer);
 
         setTimeout(() => {
             // We need to wait a small amount of time so we can close the connection. No, promises did not helped here.

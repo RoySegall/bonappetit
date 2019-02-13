@@ -23,7 +23,7 @@ describe("Product service", () => {
         expect(await productService.getAll()).toEqual([]);
 
         // Creating and verify loading.
-        const entry = await productService.create({name: "Foo"});
+        const entry = await productService.create({name: "Foo", diets: ["carnivore", "vegetarian"]});
         const entries = await productService.getAll();
 
         expect(entries[0]._id).toEqual(entry._id);

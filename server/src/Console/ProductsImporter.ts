@@ -23,7 +23,7 @@ export default class ProductsImporter extends ImportBase {
         Promise.all(items.map(async (item) => {
             try {
                 await this.productService.create(item);
-                console.log(`Migrating ${item.name}`)
+                console.log(`Migrating ${item.name}`);
             } catch (e) {
                 console.error(e);
             }
