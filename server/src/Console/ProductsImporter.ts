@@ -16,19 +16,18 @@ export default class ProductsImporter extends ImportBase {
     }
 
     public async importData() {
-
         console.log(this.chalk().yellow("Starting to import products"));
 
         const items = JSON.parse(this.getAsset("products.json"));
 
-        items.map((item) => {
+        Promise.all(items.map(async (item) => {
             try {
-                this.productService.create(item);
+                await this.productService.create(item);
                 console.log(`Migrating ${item.name}`)
             } catch (e) {
                 console.error(e);
             }
-        });
+        }));
 
         console.log(this.chalk().yellow("Done! all products have been imported"));
     }

@@ -5,7 +5,7 @@ export default abstract class AbstractEntityService implements EntityService {
     public abstract getSchema();
 
     public async getAll() {
-        return await this.getSchema().find({}).lean();
+        return await this.getSchema().find({}).exec();
     }
 
     public async load(id: string) {
