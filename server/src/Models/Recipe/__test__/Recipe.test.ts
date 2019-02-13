@@ -36,61 +36,61 @@ describe("Recipe service", () => {
 
         // Creating and verify loading.
         const entry = await recipeService.create({
-            "title": "Omelette",
-            "description": "Making a simple omelette",
-            "matchFor": ["Vegetarian", "Carnivore"],
-            "created": "June 25 2018",
-            "ingredients": [
+            title: "Omelette",
+            description: "Making a simple omelette",
+            matchFor: ["Vegetarian", "Carnivore"],
+            created: "June 25 2018",
+            ingredients: [
                 {
-                    "product_id": products.egg._id,
-                    "amount": 2,
-                    "quantity": "pieces"
+                    product_id: products.egg._id,
+                    amount: 2,
+                    quantity: "pieces",
                 },
                 {
-                    "product_id": products.butter._id,
-                    "amount": 5,
-                    "quantity": "gram"
+                    product_id: products.butter._id,
+                    amount: 5,
+                    quantity: "gram",
                 },
                 {
-                    "product_id": products.salt._id,
-                    "amount": 1,
-                    "quantity": "tbs"
-                }
+                    product_id: products.salt._id,
+                    amount: 1,
+                    quantity: "tbs",
+                },
             ],
-            "steps": [
+            steps: [
                 {
-                    "text": "Take a pan and hit it"
+                    text: "Take a pan and hit it",
                 },
                 {
-                    "text": "Crack two eggs into a bowel"
+                    text: "Crack two eggs into a bowel",
                 },
                 {
-                    "text": "Add the salt"
+                    text: "Add the salt",
                 },
                 {
-                    "text": "scramble them together"
+                    text: "scramble them together",
                 },
                 {
-                    "text": "Once the pan is hot, poor the scramble eggs to the pan"
+                    text: "Once the pan is hot, poor the scramble eggs to the pan",
                 },
                 {
-                    "text": "Wait until the scramble eggs solid on the back side and flip it"
+                    text: "Wait until the scramble eggs solid on the back side and flip it",
                 },
                 {
-                    "text": "Repeat again on the previous step"
-                }
+                    text: "Repeat again on the previous step",
+                },
             ],
-            "notes": [
+            notes: [
                 {
-                    "text": "You can switch the butter with oil"
+                    text: "You can switch the butter with oil",
                 },
                 {
-                    "text": "You might want to use a non-stick pan which can reduce the amount of oil"
+                    text: "You might want to use a non-stick pan which can reduce the amount of oil",
                 },
                 {
-                    "text": "Eggs can be a good source for protein"
-                }
-            ]
+                    text: "Eggs can be a good source for protein",
+                },
+            ],
         });
 
         const entries = await recipeService.getAll();
