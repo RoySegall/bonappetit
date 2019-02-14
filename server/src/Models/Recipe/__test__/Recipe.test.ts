@@ -95,7 +95,7 @@ describe("Recipe service", () => {
         expect(await recipeService.getAll()).toEqual([]);
 
         // Creating and verify loading.
-        const entry: any = createRecipe();
+        const entry: any = await createRecipe();
 
         const entries = await recipeService.getAll();
 
