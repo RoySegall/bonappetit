@@ -9,9 +9,15 @@ const ProductSchema = new mongoose.Schema({
         required: true,
         type: String,
     },
-    single_peace: {
-        default: false,
-        type: Boolean,
+    diets: {
+        type: [String],
+        required: true,
+        validate: {
+            validator(v) {
+                return v.length > 0;
+            },
+            message: (props) => `${props.value} is empty`,
+        },
     },
 });
 

@@ -9,7 +9,9 @@
     "start": "node ./dist/server.js",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "lint-fix": "tslint -c tslint.json 'src/**/*.ts' --fix",
-    "unit-test": "npx jest"
+    "unit-test": "npx jest",
+    "cli": "ts-node src/cli.ts",
+    "cli-help": "ts-node src/cli.ts --help"
   },
   "author": "",
   "license": "ISC",
@@ -22,7 +24,9 @@
     "express": "^4.16.4",
     "figlet": "^1.2.1",
     "inquirer": "^6.2.1",
-    "mongoose": "^5.4.5",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.11",
+    "npq": "^1.14.3",
     "shelljs": "^0.8.3"
   },
   "devDependencies": {

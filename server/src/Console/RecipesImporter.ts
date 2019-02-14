@@ -7,8 +7,8 @@ export default class RecipesImporter extends ImportBase {
     protected name = "Import recipes";
     protected description = "Import the recipes";
 
-    protected RecipeService: any;
-    protected ProductService: any;
+    protected RecipeService: RecipeService;
+    protected ProductService: ProductService;
 
     constructor() {
         super();
@@ -21,7 +21,7 @@ export default class RecipesImporter extends ImportBase {
 
     public async importData() {
         // Pull all the products at once from the DB.
-        const allProducts: any = (await this.ProductService.getAll());
+        const allProducts: any = await (this.ProductService.getAll());
 
         const map = {};
 
@@ -30,24 +30,21 @@ export default class RecipesImporter extends ImportBase {
             map[allProducts[i].name] = allProducts[i]._id;
         }
 
-        return new Promise(async (resolve, reject) => {
+        console.log(this.chalk().yellow("Starting to import recipes"));
 
-            console.log(this.chalk().yellow("Starting to import recipes"));
+        const recipes = JSON.parse(this.getAsset("recipes.json"));
 
-            const recipes = JSON.parse(this.getAsset("recipes.json"));
-
-            for (const recipe of recipes) {
-                for (const ingredient of recipe.ingredients) {
-                    // Replace the name of the product with the ID.
-                    ingredient.product_id = map[ingredient.product_id];
-                }
+        recipes.map((recipe) => {
+            for (const ingredient of recipe.ingredients) {
+                // Replace the name of the product with the ID.
+                ingredient.product_id = map[ingredient.product_id];
             }
 
-            // Insert them at once to the collection.
-            this.RecipeService.getSchema().collection.insertMany(recipes);
+            console.log(`Migrating ${recipe.title}`);
 
-            console.log(this.chalk().yellow("Done! all recipes have been imported"));
-            resolve();
+            this.RecipeService.create(recipe);
         });
+
+        console.log(this.chalk().yellow("Done! all recipes have been imported"));
     }
 }
