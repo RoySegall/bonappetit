@@ -23,6 +23,11 @@ const RecipeSchema = new mongoose.Schema({
             message: (props) => `${props.value} is empty`,
         },
     },
+    products_id: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+        required: true,
+    }],
     ingredients: [{
         product_id: {
             type: mongoose.Schema.Types.ObjectId,
@@ -52,11 +57,24 @@ const RecipeSchema = new mongoose.Schema({
     }],
 });
 
-RecipeSchema.pre("validate", function(this: any, next) {
+RecipeSchema.pre("validate", function (this: any, next) {
     const recipe = this;
     // Yes, validate function need to handle only validation but if we won't change the value of the date to timestamp
     // mongoose will kick us out.
     recipe.created = moment(recipe.created).unix();
+    next();
+});
+
+RecipeSchema.pre("save", function (this: any, next) {
+    // Concat all the ids of the products into a flat array so we could query it much more easy.
+    const recipe = this;
+
+    if (recipe.products_id.length === 0) {
+        recipe.ingredients.map((ingredient: any) => {
+            recipe.products_id.push(ingredient._id)
+        });
+    }
+
     next();
 });
 

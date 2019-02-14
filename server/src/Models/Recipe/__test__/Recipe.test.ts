@@ -15,27 +15,8 @@ const products: any = {};
 
 describe("Recipe service", () => {
 
-    beforeAll(async () => {
-        // Connecting to the db.
-        await mongoose.connect(Settings.get().MONGO_URL);
-
-        // Change the name of the schema for testing.
-        recipeService.setRecipe(mongoose.model("Recipe", RecipeSchema, recipeCollection));
-        productService.setProduct(mongoose.model("Product", ProductSchema, productCollection));
-
-        products.egg = await productService.create({name: "Egg", diets: ["carnivore", "vegetarian"]});
-        products.butter = await productService.create({name: "Butter", diets: ["carnivore", "vegetarian"]});
-        products.salt = await productService.create({name: "Salt", diets: ["carnivore", "vegetarian"]});
-    });
-
-    test("Testing crud operations", async () => {
-        expect.assertions(5);
-
-        // Verify we got nothing.
-        expect(await recipeService.getAll()).toEqual([]);
-
-        // Creating and verify loading.
-        const entry = await recipeService.create({
+    const createRecipe = async () => {
+        return await recipeService.create({
             title: "Omelette",
             description: "Making a simple omelette",
             matchFor: ["Vegetarian", "Carnivore"],
@@ -92,6 +73,29 @@ describe("Recipe service", () => {
                 },
             ],
         });
+    };
+
+    beforeAll(async () => {
+        // Connecting to the db.
+        await mongoose.connect(Settings.get().MONGO_URL);
+
+        // Change the name of the schema for testing.
+        recipeService.setRecipe(mongoose.model("Recipe", RecipeSchema, recipeCollection));
+        productService.setProduct(mongoose.model("Product", ProductSchema, productCollection));
+
+        products.egg = await productService.create({name: "Egg", diets: ["carnivore", "vegetarian"]});
+        products.butter = await productService.create({name: "Butter", diets: ["carnivore", "vegetarian"]});
+        products.salt = await productService.create({name: "Salt", diets: ["carnivore", "vegetarian"]});
+    });
+
+    test("Testing crud operations", async () => {
+        expect.assertions(5);
+
+        // Verify we got nothing.
+        expect(await recipeService.getAll()).toEqual([]);
+
+        // Creating and verify loading.
+        const entry = createRecipe();
 
         const entries = await recipeService.getAll();
 
@@ -116,6 +120,15 @@ describe("Recipe service", () => {
         loadedEntry = await recipeService.load(entry._id);
 
         expect(loadedEntry).toBeNull();
+    });
+
+    test("Testing the product ids entries", async () => {
+        const entry = await createRecipe();
+
+        expect.assertions(2);
+
+        expect(entry.products_id).not.toBe([]);
+        expect(entry.products_id).toHaveLength(3);
     });
 
     afterEach(async () => {
