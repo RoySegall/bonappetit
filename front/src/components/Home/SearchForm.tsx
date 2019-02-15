@@ -1,8 +1,19 @@
 import * as React from "react";
 import {navigate} from "@reach/router";
 import AppContext from "../../Store/AppContext";
+import Http from "../../Http";
 
 export default class SearchForm extends React.Component<any, any> {
+
+    protected saved_products: any = [];
+
+    componentDidMount() {
+        const http = new Http();
+
+        http.request('get', 'products').then((results) => {
+            this.setState({products: results.data});
+        });
+    }
 
     constructor(props) {
         super(props);
@@ -26,7 +37,7 @@ export default class SearchForm extends React.Component<any, any> {
                     icon: "fas fa-drumstick-bite",
                 },
             ],
-            cloned_products: props.products,
+            products: [],
             strategy: "exact",
             diet: "",
             formError: ""
@@ -93,15 +104,21 @@ export default class SearchForm extends React.Component<any, any> {
             diet = null;
         }
 
+        if (this.saved_products.length === 0) {
+            this.saved_products = this.state.products;
+        }
+
         // When the user select a diet we need to set the current component products as the products from the DB which
         // passed as a property to the component.
-        let cloned_products = this.props.products;
+        let products = [];
 
         if (diet !== null) {
             // There is a selected diet. Filter products which does not match to the selected diet.
-            cloned_products = cloned_products.filter((item) => {
+            products = this.saved_products.filter((item) => {
                 return item.diets.indexOf(diet) >= 0;
             });
+        } else {
+            products = this.saved_products;
         }
 
         // Setting the diet type in the context.
@@ -111,8 +128,8 @@ export default class SearchForm extends React.Component<any, any> {
 
         // Setting the diet and the filtered products, if they filtered, and clear the selected products property.
         // We need to clear the selected because the user might selected products which not match the current diet.
-        this.setState({diet, cloned_products, selected: {}});
-    }
+        this.setState({diet, products, selected: {}});
+    };
 
     /**
      * Reset the form state.
@@ -227,7 +244,7 @@ export default class SearchForm extends React.Component<any, any> {
 
                             <div className="products" id="products">
 
-                                {this.state.cloned_products.map((product, key) => {
+                                {this.state.products.length == 0 ? (<i className="fas fa-spinner fa-spin"></i>) : this.state.products.map((product, key) => {
                                     return (
                                         <AppContext.Consumer key={key}>
                                             {(context: any) => (

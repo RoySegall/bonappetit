@@ -6,17 +6,8 @@ import SearchResults from "./SearchResults";
 import {Router} from "@reach/router";
 import Recipe from "./Recipe";
 import AppProvider from "../Store/AppProvider";
-import Http from "../Http";
 
 export default class App extends React.Component {
-
-    componentDidMount(): void {
-
-        const http = new Http();
-        http.request('get', 'products').then((data) => {
-            console.log(data);
-        })
-    }
 
     render() {
         return (
