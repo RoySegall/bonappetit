@@ -70,6 +70,7 @@
   "dependencies": {
     "@reach/router": "^1.2.1",
     "@types/reach__router": "^1.2.3",
+    "acorn": "^6.1.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
     "dotenv-webpack": "^1.7.0"
