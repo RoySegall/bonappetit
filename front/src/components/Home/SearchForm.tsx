@@ -10,7 +10,7 @@ export default class SearchForm extends React.Component<any, any> {
     componentDidMount() {
         const http = new Http();
 
-        http.request('get', 'products').then((results) => {
+        http.request("get", "products").then((results) => {
             this.setState({products: results.data});
         });
     }
@@ -129,7 +129,7 @@ export default class SearchForm extends React.Component<any, any> {
         // Setting the diet and the filtered products, if they filtered, and clear the selected products property.
         // We need to clear the selected because the user might selected products which not match the current diet.
         this.setState({diet, products, selected: {}});
-    };
+    }
 
     /**
      * Reset the form state.
@@ -244,7 +244,7 @@ export default class SearchForm extends React.Component<any, any> {
 
                             <div className="products" id="products">
 
-                                {this.state.products.length == 0 ? (<i className="fas fa-spinner fa-spin"></i>) : this.state.products.map((product, key) => {
+                                {this.state.products.length === 0 ? (<i className="fas fa-spinner fa-spin"></i>) : this.state.products.map((product, key) => {
                                     return (
                                         <AppContext.Consumer key={key}>
                                             {(context: any) => (
