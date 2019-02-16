@@ -144,6 +144,9 @@
     "name": "Brown sugar", "diets": ["vegan", "vegetarian", "carnivore"]
   },
   {
+    "name": "Sugar powder", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
     "name": "Honey", "diets": ["vegetarian", "carnivore"]
   },
   {
@@ -265,5 +268,8 @@
   },
   {
     "name": "Corn", "diets": ["vegan", "vegetarian", "carnivore"]
+  },
+  {
+    "name": "Vanille", "diets": ["vegan", "vegetarian", "carnivore"]
   }
 ]

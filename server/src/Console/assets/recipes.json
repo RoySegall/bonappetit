@@ -55,5 +55,115 @@
         "text": "Eggs can be a good source for protein"
       }
     ]
+  },
+  {
+    "title": "Fruit salad",
+    "description": "Making an awesome fruit salad",
+    "matchFor": ["Vegan", "Vegetarian", "Carnivore"],
+    "created": "June 25 2018",
+    "ingredients": [
+      {
+        "product_id": "Apple",
+        "amount": 2,
+        "quantity": "item"
+      },
+      {
+        "product_id": "Banana",
+        "amount": 1,
+        "quantity": "item"
+      },
+      {
+        "product_id": "Melon",
+        "amount": 0.5,
+        "quantity": "item"
+      },
+      {
+        "product_id": "Pear",
+        "amount": 1,
+        "quantity": "item"
+      },
+      {
+        "product_id": "Strawberry",
+        "amount": 500,
+        "quantity": "Gram"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Take a big bowl"
+      },
+      {
+        "text": "Cut all the fruits into peaces and put inside the bowl"
+      }
+    ]
+  },
+  {
+    "title": "Crêpe",
+    "description": "Tasty crepe",
+    "matchFor": ["Vegetarian", "Carnivore"],
+    "created": "June 25 2018",
+    "ingredients": [
+      {
+        "product_id": "Egg",
+        "amount": 1,
+        "quantity": "pieces"
+      },
+      {
+        "product_id": "Butter",
+        "amount": 5,
+        "quantity": "gram"
+      },
+      {
+        "product_id": "Flower",
+        "amount": 1,
+        "quantity": "cup"
+      },
+      {
+        "product_id": "Milk",
+        "amount": 1,
+        "quantity": "cup"
+      },
+      {
+        "product_id": "Vanille",
+        "amount": 1,
+        "quantity": "spoon"
+      },
+      {
+        "product_id": "Sugar powder",
+        "amount": 20,
+        "quantity": "gram"
+      }
+    ],
+    "steps": [
+      {
+        "text": "In a big bowl put the Egg, Milk, Sugar power, Vanille, and the Flower(filtered of course)"
+      },
+      {
+        "text": "Hit a pan"
+      },
+      {
+        "text": "Start to mix all the items on the bowl"
+      },
+      {
+        "text": "Once the pan is hot, take the butter and spread it on the pan."
+      },
+      {
+        "text": "With a ladle, poor a portion from the mix and make sure the portion is spread all over the pan"
+      },
+      {
+        "text": "Once bubbles started to appear use a spatula to flip to the other side"
+      },
+      {
+        "text": "Repeat until you got nothing left. Enjoy!"
+      }
+    ],
+    "notes": [
+      {
+        "text": "You can spread the butter on the pan by taking the butter while inside the rap, expose one side of the butter, and role it on the pan"
+      },
+      {
+        "text": "You can use a spoon or a proprietary crepe spatula for spreading the portion on the pan"
+      }
+    ]
   }
 ]

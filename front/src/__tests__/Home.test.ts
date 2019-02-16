@@ -17,7 +17,7 @@ describe('Home', () => {
         expect.assertions(13);
 
         let buttons = await page.$x("//div[@class='products']//button");
-        expect(buttons.length).toBe(89);
+        expect(buttons.length).toBe(91);
 
         // Filtering by vegan products.
         let dietButton = await page.$x("//div[@class='diets']//button[@class='btn vegan']");
@@ -29,7 +29,7 @@ describe('Home', () => {
         expect(await page.$x("//div[@class='diets']//button[@class='btn vegetarian selected']").length).toBe(undefined);
 
         buttons = await page.$x("//div[@class='products']//button");
-        expect(buttons.length).toBe(51);
+        expect(buttons.length).toBe(53);
 
         // Filtering by vegan products.
         dietButton = await page.$x("//div[@class='diets']//button[@class='btn vegetarian']");
@@ -42,7 +42,7 @@ describe('Home', () => {
         expect(await page.$x("//div[@class='diets']//button[@class='btn vegan selected']").length).toBe(undefined);
 
         buttons = await page.$x("//div[@class='products']//button");
-        expect(buttons.length).toBe(72);
+        expect(buttons.length).toBe(74);
 
         // Filter by carnivore
         dietButton = await page.$x("//div[@class='diets']//button[@class='btn carnivore']");
@@ -55,7 +55,7 @@ describe('Home', () => {
         expect(await page.$x("//div[@class='diets']//button[@class='btn vegan selected']").length).toBe(undefined);
 
         buttons = await page.$x("//div[@class='products']//button");
-        expect(buttons.length).toBe(89);
+        expect(buttons.length).toBe(91);
     });
 
     it('Testing the items click', async () => {

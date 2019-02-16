@@ -34,15 +34,17 @@ export default class RecipesImporter extends ImportBase {
 
         const recipes = JSON.parse(this.getAsset("recipes.json"));
 
-        recipes.map((recipe) => {
+        recipes.map(async (recipe) => {
             for (const ingredient of recipe.ingredients) {
                 // Replace the name of the product with the ID.
                 ingredient.product_id = map[ingredient.product_id];
             }
 
-            console.log(`Migrating ${recipe.title}`);
+            console.log(recipe.ingredients);
 
-            this.RecipeService.create(recipe);
+            await this.RecipeService.create(recipe);
+
+            console.log(`Migrating ${recipe.title}`);
         });
 
         console.log(this.chalk().yellow("Done! all recipes have been imported"));

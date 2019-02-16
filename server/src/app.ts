@@ -3,6 +3,7 @@ import * as cors from "cors";
 import * as express from "express";
 import ProductController from "./Models/Product/ProductController";
 import RecipeController from "./Models/Recipe/RecipeController";
+import GeneralController from "./Controllers/GeneralController";
 
 class App {
 
@@ -21,9 +22,7 @@ class App {
         // Adding productSchema routes.
         this.app.use("/", new ProductController().router);
         this.app.use("/", new RecipeController().router);
-        this.app.use("/", express.Router().get("/", (req: express.Request, res: express.Response) => {
-            res.status(200).send({"status": "working"});
-        }));
+        this.app.use("/", new GeneralController().router);
     }
 }
 
