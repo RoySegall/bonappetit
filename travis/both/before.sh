@@ -4,15 +4,15 @@
 pwd
 cd front
 npm i
-#npm run start-dev &
+npm run start-dev &
 
-#while ! nc -z localhost 8080; do
-#  sleep 0.1 # wait for 1/10 of the second before check again
-#done
+while ! nc -z localhost 8080; do
+  sleep 0.1 # wait for 1/10 of the second before check again
+done
 
 cd -
 
-#echo "Front is running"
+echo "Front is running"
 
 cd server
 
