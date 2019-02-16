@@ -58,20 +58,17 @@ describe('Home', () => {
         expect(buttons.length).toBe(89);
     });
 
-    it('Making sure we have the products from the DB', async () => {
-        expect.assertions(0);
-    });
-
     it('Testing the items click', async () => {
-        expect.assertions(0);
-    });
+        expect.assertions(2);
 
-    it('Testing the stragety click', async () => {
-        expect.assertions(0);
-    });
+        let button = await page.$x("//div[@class='products']//button[contains(@class, 'selected')]");
+        expect(button.length).toBe(0);
 
-    it('Testing the form submission', async () => {
-        expect.assertions(0);
+        button = await page.$x("//div[@class='products']//button");
+        await button[0].click();
+
+        button = await page.$x("//div[@class='products']//button[contains(@class, 'selected')]");
+        expect(button.length).toBe(1);
     });
 
     afterAll(async () => {
