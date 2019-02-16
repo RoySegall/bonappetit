@@ -2,7 +2,7 @@
 
 # Setting up the front env.
 pwd
-cd travis/front
+cd front
 npm i
 npm run start-dev &
 
@@ -14,7 +14,7 @@ cd -
 
 echo "Front is running"
 
-cd travis/server
+cd server
 
 npm i -g tslint typescript ts-node
 npm i -D jest typescript
