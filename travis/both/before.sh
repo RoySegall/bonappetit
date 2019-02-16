@@ -24,9 +24,9 @@ cp .env.travis .env
 
 npm run dev &
 
-#while ! nc -z localhost 3000; do
-#  sleep 0.1 # wait for 1/10 of the second before check again
-#done
+while ! nc -z localhost 3000; do
+  sleep 0.1 # wait for 1/10 of the second before check again
+done
 
 cd -
 
