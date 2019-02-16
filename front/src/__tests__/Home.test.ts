@@ -13,10 +13,68 @@ describe('Home', () => {
         await expect(page.title()).resolves.toMatch('Hello React!');
     });
 
-    // it('Should see the products', async() => {
-    // });
+    it('Testing the product diet filtering', async () => {
+        expect.assertions(13);
 
-    afterAll(async() => {
+        let buttons = await page.$x("//div[@class='products']//button");
+        expect(buttons.length).toBe(89);
+
+        // Filtering by vegan products.
+        let dietButton = await page.$x("//div[@class='diets']//button[@class='btn vegan']");
+        await dietButton[0].click();
+
+        // Making sure we have selected buttons effect.
+        expect(await page.$x("//div[@class='diets']//button[@class='btn vegan selected']")).not.toBe(undefined);
+        expect(await page.$x("//div[@class='diets']//button[@class='btn carnivore selected']").length).toBe(undefined);
+        expect(await page.$x("//div[@class='diets']//button[@class='btn vegetarian selected']").length).toBe(undefined);
+
+        buttons = await page.$x("//div[@class='products']//button");
+        expect(buttons.length).toBe(51);
+
+        // Filtering by vegan products.
+        dietButton = await page.$x("//div[@class='diets']//button[@class='btn vegetarian']");
+
+        await dietButton[0].click();
+
+        // Making sure we have selected buttons effect.
+        expect(await page.$x("//div[@class='diets']//button[@class='btn vegetarian selected']")).not.toBe(undefined);
+        expect(await page.$x("//div[@class='diets']//button[@class='btn carnivore selected']").length).toBe(undefined);
+        expect(await page.$x("//div[@class='diets']//button[@class='btn vegan selected']").length).toBe(undefined);
+
+        buttons = await page.$x("//div[@class='products']//button");
+        expect(buttons.length).toBe(72);
+
+        // Filter by carnivore
+        dietButton = await page.$x("//div[@class='diets']//button[@class='btn carnivore']");
+
+        await dietButton[0].click();
+
+        // Making sure we have selected buttons effect.
+        expect(await page.$x("//div[@class='diets']//button[@class='btn carnivore selected']")).not.toBe(undefined);
+        expect(await page.$x("//div[@class='diets']//button[@class='btn vegetarian selected']").length).toBe(undefined);
+        expect(await page.$x("//div[@class='diets']//button[@class='btn vegan selected']").length).toBe(undefined);
+
+        buttons = await page.$x("//div[@class='products']//button");
+        expect(buttons.length).toBe(89);
+    });
+
+    it('Making sure we have the products from the DB', async () => {
+        expect.assertions(0);
+    });
+
+    it('Testing the items click', async () => {
+        expect.assertions(0);
+    });
+
+    it('Testing the stragety click', async () => {
+        expect.assertions(0);
+    });
+
+    it('Testing the form submission', async () => {
+        expect.assertions(0);
+    });
+
+    afterAll(async () => {
         await browser.close();
     });
 });
