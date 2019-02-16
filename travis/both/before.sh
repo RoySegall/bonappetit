@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Setting up the front env.
-cd front
+cd travis/front
 bash before.sh
 npm run start-dev &
 
@@ -13,7 +13,7 @@ cd -
 
 echo "Front is running"
 
-cd server
+cd travis/server
 bash before.sh
 npm run dev &
 
