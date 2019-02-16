@@ -21,6 +21,9 @@ class App {
         // Adding productSchema routes.
         this.app.use("/", new ProductController().router);
         this.app.use("/", new RecipeController().router);
+        this.app.use("/", express.Router().get("/", (req: express.Request, res: express.Response) => {
+            res.status(200).send({"status": "working"});
+        }));
     }
 }
 
