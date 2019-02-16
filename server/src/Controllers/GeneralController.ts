@@ -39,8 +39,7 @@ export default class GeneralController extends BaseController {
                 return;
             }
 
-
-            res.status(200).send({results: this.recipeService.search(req.body.ids, req.body.strategy)});
+            res.status(200).send({results: await this.recipeService.search(req.body.ids, req.body.strategy)});
         });
     }
 }

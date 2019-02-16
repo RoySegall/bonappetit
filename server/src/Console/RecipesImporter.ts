@@ -40,8 +40,6 @@ export default class RecipesImporter extends ImportBase {
                 ingredient.product_id = map[ingredient.product_id];
             }
 
-            console.log(recipe.ingredients);
-
             await this.RecipeService.create(recipe);
 
             console.log(`Migrating ${recipe.title}`);

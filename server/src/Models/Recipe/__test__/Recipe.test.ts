@@ -123,12 +123,25 @@ describe("Recipe service", () => {
     });
 
     test("Testing the product ids entries", async () => {
-        const entry = await createRecipe();
-
         expect.assertions(2);
+
+        const entry = await createRecipe();
 
         expect(entry.products_id).not.toBe([]);
         expect(entry.products_id).toHaveLength(3);
+    });
+
+    test("Testing the search method works", async () => {
+        // Creating the recipe.
+        await createRecipe();
+        expect.assertions(2);
+
+        // Simple test for now.
+        let temp = await recipeService.search([products.egg._id], 'contains');
+        expect(temp.length).toBe(1);
+
+        temp = await recipeService.search([products.egg._id], 'exact');
+        expect(temp.length).toBe(0);
     });
 
     afterEach(async () => {
