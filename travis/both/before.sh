@@ -22,6 +22,10 @@ npm i -D ts-jest @types/jest
 npm i
 cp .env.travis .env
 
+# Migrating stuff.
+npm run cli migrate products
+npm run cli migrate recipes
+
 npm run dev &
 
 while ! nc -z localhost 3000; do
