@@ -32,5 +32,5 @@ script:
   # Testing the front
   - cd front
   - npm run lint
-  - npm run unit-test
+  # todo: run here the e2e tests.
   - cd -
