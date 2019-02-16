@@ -1,52 +1,41 @@
 import * as React from "react";
-import {Link, RouteComponentProps} from "@reach/router";
-import AppContext from "../Store/AppContext";
+import {Link, NavigateFn, WindowLocation} from "@reach/router";
+import Http from "../Http";
+import AppProvider from "../Store/AppProvider";
 
-export default class SearchResults extends React.Component<RouteComponentProps, any, any> {
+type SearchResultComponentInterface<TParams = {}> = Partial<TParams> & {
+    path?: string;
+    default?: boolean;
+    location?: WindowLocation;
+    navigate?: NavigateFn;
+    uri?: string;
+    context?: AppProvider;
+};
 
-    constructor(props) {
-        super(props);
+export default class SearchResults extends React.Component<SearchResultComponentInterface, any, any> {
 
-        this.state = {
-            results: [
-                {
-                    _id: 50,
-                    image: "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/d97312e937034475934f5ca16c974dc1/eggsfinalFB.jpg?output-quality=60&resize=600:*",
-                    title: "French Omelette",
-                    products: ["Egg", "Salt", "Oil"],
-                    matchFor: ["Vegetarian", "Carnivore"],
-                    steps: [
-                        {
-                            "text": "Take a pan and hit it"
-                        },
-                        {
-                            "text": "Crack two eggs into a bowel"
-                        },
-                        {
-                            "text": "Add the salt"
-                        },
-                        {
-                            "text": "scramble them together"
-                        },
-                        {
-                            "text": "Once the pan is hot, poor the scramble eggs to the pan"
-                        },
-                        {
-                            "text": "Wait until the scramble eggs solid on the back side and flip it"
-                        },
-                        {
-                            "text": "Repeat again on the previous step"
-                        }
-                    ],
-                    duration: "15m",
-                }
-            ]
-        };
+    componentDidMount(): void {
+
+        const http = new Http();
+
+        let context: any = this.props.context;
+
+        http.request('post', 'search/recipes', {
+            "ids": Object.keys(context.products),
+            "strategy": context.strategy
+        })
+            .then((data) => {
+                this.setState({results: data.data.results});
+            }).catch((e) => {
+            console.log(e);
+        });
     }
 
-    emptyProductsError = (products) => {
+    emptyProductsError = () => {
 
-        if (Object.keys(products).length !== 0) {
+        console.log(this);
+
+        if (this.state.results.length !== 0) {
             return;
         }
 
@@ -60,8 +49,8 @@ export default class SearchResults extends React.Component<RouteComponentProps, 
         );
     }
 
-    getResultsFromServer = (products) => {
-        if (Object.keys(products).length === 0) {
+    getResultsFromServer = () => {
+        if (this.state.results.length === 0) {
             return;
         }
 
@@ -115,15 +104,10 @@ export default class SearchResults extends React.Component<RouteComponentProps, 
         return (
             <div className="row">
                 <div className="col-md-9 mx-auto">
-
-                    <AppContext.Consumer>
-                        {(context: any) => (
-                            <div>
-                                {this.emptyProductsError(context.products)}
-                                {this.getResultsFromServer(context.products)}
-                            </div>
-                        )}
-                    </AppContext.Consumer>
+                    <div>
+                        {this.emptyProductsError()}
+                        {this.getResultsFromServer()}
+                    </div>
                 </div>
             </div>
         );
