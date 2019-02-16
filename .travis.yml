@@ -7,30 +7,15 @@ cache:
     - /home/travis/build/RoySegall/bonappetit/server/node_modules
     - /home/travis/build/RoySegall/bonappetit/front/node_modules
 
+env:
+  matrix:
+    - SECTION=front
+    - SECTION=server
+    - SECTION=both
+
+
 before_script:
-  # Setting up server.
-  - cd server
-  - npm i -g tslint typescript ts-node
-  - npm i -D jest typescript
-  - npm i -D ts-jest @types/jest
-  - cp .env.travis .env
-  - cd -
-
-  # Setting up front server.
-  - cd front
-  - npm i
-  - cd -
-
+  - bash trvis/before_$SECTION.sh
 
 script:
-  # Testing the server.
-  - cd server
-  - npm run lint
-  - npm run unit-test
-  - cd -
-
-  # Testing the front
-  - cd front
-  - npm run lint
-  # todo: run here the e2e tests.
-  - cd -
+  - bash trvis/run_$SECTION.sh
