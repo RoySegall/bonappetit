@@ -9,8 +9,8 @@ cache:
 
 env:
   matrix:
-    - SECTION=front
-    - SECTION=server
+#    - SECTION=front
+#    - SECTION=server
     - SECTION=both
 
 
