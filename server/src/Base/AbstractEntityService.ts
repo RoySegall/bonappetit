@@ -16,7 +16,7 @@ export default abstract class AbstractEntityService implements EntityService {
         return this.getSchema().findOneAndUpdate({_id: id}, values, {new: true}, callback).exec();
     }
 
-    public async create(object: object) {
+    public async create(object: any) {
         const product = new (this.getSchema())(object);
 
         return await product.save();
