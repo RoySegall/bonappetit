@@ -29,12 +29,12 @@ describe("Recipe service", () => {
                     quantity: "pieces",
                 },
                 {
-                    product_id: "Butter",
+                    name: "Butter",
                     amount: 5,
                     quantity: "gram",
                 },
                 {
-                    product_id: "Salt",
+                    name: "Salt",
                     amount: 1,
                     quantity: "tbs",
                 },
