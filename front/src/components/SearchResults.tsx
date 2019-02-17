@@ -30,8 +30,7 @@ export default class SearchResults extends React.Component<SearchResultComponent
 
         http.request("post", "search/recipes", {
             "ids": Object.keys(context.products),
-            "strategy": context.strategy
-        })
+            "strategy": context.strategy})
             .then((data) => {
                 this.setState({results: data.data.results});
             }).catch((e) => {
