@@ -28,7 +28,7 @@ export default class SearchResults extends React.Component<SearchResultComponent
 
         let context: any = this.props.context;
 
-        http.request('post', 'search/recipes', {
+        http.request("post", "search/recipes", {
             "ids": Object.keys(context.products),
             "strategy": context.strategy
         })
