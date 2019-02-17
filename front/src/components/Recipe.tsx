@@ -34,7 +34,7 @@ export default class Recipe extends React.Component<RouteComponentProps, any, an
                         </div>
                     </div>
                 </div>
-            )
+            );
         }
 
         return (
