@@ -2,21 +2,22 @@
   {
     "title": "Omelette",
     "description": "Making a simple omelette",
+    "image": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/d97312e937034475934f5ca16c974dc1/eggsfinalFB.jpg?output-quality=60&resize=600:*",
     "matchFor": ["Vegetarian", "Carnivore"],
     "created": "June 25 2018",
     "ingredients": [
       {
-        "product_id": "Egg",
+        "name": "Egg",
         "amount": 2,
         "quantity": "pieces"
       },
       {
-        "product_id": "Butter",
+        "name": "Butter",
         "amount": 5,
         "quantity": "gram"
       },
       {
-        "product_id": "Salt",
+        "name": "Salt",
         "amount": 1,
         "quantity": "tbs"
       }
@@ -59,31 +60,32 @@
   {
     "title": "Fruit salad",
     "description": "Making an awesome fruit salad",
+    "image": "https://www.drweil.com/wp-content/uploads/2016/12/diet-nutrition_recipes_frosted-orange-ginger-fruit-salad_2716x1810_000023420755-1024x768.jpg",
     "matchFor": ["Vegan", "Vegetarian", "Carnivore"],
     "created": "June 25 2018",
     "ingredients": [
       {
-        "product_id": "Apple",
+        "name": "Apple",
         "amount": 2,
         "quantity": "item"
       },
       {
-        "product_id": "Banana",
+        "name": "Banana",
         "amount": 1,
         "quantity": "item"
       },
       {
-        "product_id": "Melon",
+        "name": "Melon",
         "amount": 0.5,
         "quantity": "item"
       },
       {
-        "product_id": "Pear",
+        "name": "Pear",
         "amount": 1,
         "quantity": "item"
       },
       {
-        "product_id": "Strawberry",
+        "name": "Strawberry",
         "amount": 500,
         "quantity": "Gram"
       }
@@ -100,36 +102,37 @@
   {
     "title": "Crêpe",
     "description": "Tasty crepe",
+    "image": "https://img.sndimg.com/food/image/upload/fl_progressive,c_fill,q_80,w_560,h_315/v1/img/recipes/18/41/0/mlUJhy1T3CFzP1eDMACA_DSC_0003.jpg",
     "matchFor": ["Vegetarian", "Carnivore"],
     "created": "June 25 2018",
     "ingredients": [
       {
-        "product_id": "Egg",
+        "name": "Egg",
         "amount": 1,
         "quantity": "pieces"
       },
       {
-        "product_id": "Butter",
+        "name": "Butter",
         "amount": 5,
         "quantity": "gram"
       },
       {
-        "product_id": "Flower",
+        "name": "Flower",
         "amount": 1,
         "quantity": "cup"
       },
       {
-        "product_id": "Milk",
+        "name": "Milk",
         "amount": 1,
         "quantity": "cup"
       },
       {
-        "product_id": "Vanille",
+        "name": "Vanille",
         "amount": 1,
         "quantity": "spoon"
       },
       {
-        "product_id": "Sugar powder",
+        "name": "Sugar powder",
         "amount": 20,
         "quantity": "gram"
       }

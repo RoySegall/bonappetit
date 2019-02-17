@@ -14,6 +14,14 @@ type SearchResultComponentInterface<TParams = {}> = Partial<TParams> & {
 
 export default class SearchResults extends React.Component<SearchResultComponentInterface, any, any> {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            results: [],
+        };
+    }
+
     componentDidMount(): void {
 
         const http = new Http();
@@ -32,8 +40,6 @@ export default class SearchResults extends React.Component<SearchResultComponent
     }
 
     emptyProductsError = () => {
-
-        console.log(this);
 
         if (this.state.results.length !== 0) {
             return;
@@ -76,7 +82,9 @@ export default class SearchResults extends React.Component<SearchResultComponent
 
                                     <section className="metadata">
                                         <div className="products">
-                                            <b>Products:</b>{result.products.join(", ")}</div>
+                                            <b>Products:</b>{result.ingredients.map((item: any) => {
+                                                return item.name;
+                                        }).join(", ")}</div>
                                         <div className="diets"><b>Match
                                             for:</b>{result.matchFor.join(", ")}</div>
                                         <div className="steps"><b>Number of

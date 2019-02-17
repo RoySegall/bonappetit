@@ -28,6 +28,6 @@ export default class RecipeService extends AbstractEntityService implements Enti
     public async search(ids: any, strategy: string) {
         return this.getSchema().find({
             products_id: strategy === 'contains' ? {$in: ids} : {$eq: ids},
-        }).exec();
+        }).lean();
     }
 }

@@ -21,19 +21,20 @@ describe("Recipe service", () => {
             description: "Making a simple omelette",
             matchFor: ["Vegetarian", "Carnivore"],
             created: "June 25 2018",
+            products_id: [products.egg._id, products.butter._id, products.salt._id],
             ingredients: [
                 {
-                    product_id: products.egg._id,
+                    name: "Egg",
                     amount: 2,
                     quantity: "pieces",
                 },
                 {
-                    product_id: products.butter._id,
+                    product_id: "Butter",
                     amount: 5,
                     quantity: "gram",
                 },
                 {
-                    product_id: products.salt._id,
+                    product_id: "Salt",
                     amount: 1,
                     quantity: "tbs",
                 },
@@ -120,15 +121,6 @@ describe("Recipe service", () => {
         loadedEntry = await recipeService.load(entry._id);
 
         expect(loadedEntry).toBeNull();
-    });
-
-    test("Testing the product ids entries", async () => {
-        expect.assertions(2);
-
-        const entry = await createRecipe();
-
-        expect(entry.products_id).not.toBe([]);
-        expect(entry.products_id).toHaveLength(3);
     });
 
     test("Testing the search method works", async () => {
