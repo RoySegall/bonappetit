@@ -2,6 +2,8 @@
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const commonConfig = require('./common');
+const Dotenv = require('dotenv-webpack');
+const path = require('path');
 
 module.exports = merge(commonConfig, {
   mode: 'development',
@@ -22,5 +24,6 @@ module.exports = merge(commonConfig, {
   plugins: [
     new webpack.HotModuleReplacementPlugin(), // enable HMR globally
     new webpack.NamedModulesPlugin(), // prints more readable module names in the browser console on HMR updates
+    new Dotenv(),
   ],
 });

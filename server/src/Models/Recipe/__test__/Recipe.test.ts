@@ -21,19 +21,20 @@ describe("Recipe service", () => {
             description: "Making a simple omelette",
             matchFor: ["Vegetarian", "Carnivore"],
             created: "June 25 2018",
+            products_id: [products.egg._id, products.butter._id, products.salt._id],
             ingredients: [
                 {
-                    product_id: products.egg._id,
+                    name: "Egg",
                     amount: 2,
                     quantity: "pieces",
                 },
                 {
-                    product_id: products.butter._id,
+                    name: "Butter",
                     amount: 5,
                     quantity: "gram",
                 },
                 {
-                    product_id: products.salt._id,
+                    name: "Salt",
                     amount: 1,
                     quantity: "tbs",
                 },
@@ -122,13 +123,17 @@ describe("Recipe service", () => {
         expect(loadedEntry).toBeNull();
     });
 
-    test("Testing the product ids entries", async () => {
-        const entry = await createRecipe();
-
+    test("Testing the search method works", async () => {
+        // Creating the recipe.
+        await createRecipe();
         expect.assertions(2);
 
-        expect(entry.products_id).not.toBe([]);
-        expect(entry.products_id).toHaveLength(3);
+        // Simple test for now.
+        let temp = await recipeService.search([products.egg._id], 'contains');
+        expect(temp.length).toBe(1);
+
+        temp = await recipeService.search([products.egg._id], 'exact');
+        expect(temp.length).toBe(0);
     });
 
     afterEach(async () => {
