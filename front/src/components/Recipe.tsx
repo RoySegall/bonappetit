@@ -17,15 +17,14 @@ export default class Recipe extends React.Component<RouteComponentProps, any, an
         let props: any = this.props;
 
         http.request("get", "recipe/" + props.id)
-            .then((data) => {
-                this.setState({item: data.data});
-            }).catch((e) => {
+            .then(({data: item}) => this.setState({item})).catch((e) => {
             console.log(e);
         });
     }
 
     render() {
-        if (Object.keys(this.state.item).length === 0) {
+        const {item} = this.state;
+        if (Object.keys(item).length === 0) {
             return (
                 <div className="wrapper">
                     <div className="row">
@@ -42,18 +41,18 @@ export default class Recipe extends React.Component<RouteComponentProps, any, an
                 <div className="row">
                     <div className="col-md-9 mx-auto">
                         <div className="recipe-page">
-                            <h2>{this.state.item.title}</h2>
-                            <h3>{this.state.item.description}, published: {this.state.item.created}</h3>
+                            <h2>{item.title}</h2>
+                            <h3>{item.description}, published: {item.created}</h3>
                             <hr/>
 
                             <div className="row">
                                 <div className="col-7">
-                                    {this.state.item.steps.map((item, key) => {
+                                    {item.steps.map(({text}, key) => {
                                         return (
                                             <div className="steps" key={key}>
                                                 <p className="step">
                                                     <span className="counter">Step No. {key + 1}</span>
-                                                    <span className="text">{item.text}</span>
+                                                    <span className="text">{text}</span>
                                                 </p>
                                             </div>
                                         );
@@ -63,7 +62,7 @@ export default class Recipe extends React.Component<RouteComponentProps, any, an
                                 <div className="col-5">
                                     <section className="metadata">
                                         <div className="image">
-                                            <img src={this.state.item["image"]} className="img-fluid intro-image" alt="Recipe example" />
+                                            <img src={item["image"]} className="img-fluid intro-image" alt="Recipe example" />
                                         </div>
 
                                         <div className="row">
@@ -71,11 +70,11 @@ export default class Recipe extends React.Component<RouteComponentProps, any, an
                                             <div className="second col-8">{this.state.item.matchFor.join(", ")}</div>
                                         </div>
 
-                                        {this.state.item.ingredients.map((item, key) => {
+                                        {item.ingredients.map(({quantity, amount, name}, key) => {
                                             return (
                                                 <div className="row" key={key}>
-                                                    <div className="first col-4">{item.name}</div>
-                                                    <div className="second col-8">{item.amount} {item.quantity}</div>
+                                                    <div className="first col-4">{name}</div>
+                                                    <div className="second col-8">{amount} {quantity}</div>
                                                 </div>
                                             );
                                         })}
@@ -96,9 +95,9 @@ export default class Recipe extends React.Component<RouteComponentProps, any, an
 
 
                         <ul>
-                            {this.state.item.notes.map((item, key) => {
+                            {item.notes.map(({text}, key) => {
                                 return (
-                                    <li key={key}>{item.text}</li>
+                                    <li key={key}>{text}</li>
                                 );
                             })}
                         </ul>
